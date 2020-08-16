@@ -1,0 +1,133 @@
+.LouisLogo{
+    width: 67%;
+    margin-top: 50px;
+}
+.back{
+    width: 100%;
+    margin-top: 10px;
+}
+.pos{
+    position: relative;
+}
+.title1{
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    font-family: "Yuppy SC",serif;
+    color: white;
+}
+.title2{
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    font-family: "Wawati SC",serif;
+    color: white;
+}
+.gapline{
+    position: absolute;
+    top: 30%;
+    left: 55%;
+}
+.title3{
+    position: absolute;
+    top: 55%;
+    right: 8%;
+    font-family: "HanziPen SC",serif;
+    color: white;
+}
+.back2{
+    width: 80%;
+}
+.content1{
+    position: absolute;
+    top: 28%;
+    left: 25%;
+    font-family: "Yuppy SC",serif;
+    color: #c266cf;
+}
+.content2{
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    font-family: "Yuppy SC",serif;
+    color: #7b8ce8;
+}
+.input1 {
+    position: absolute;
+    width: 35%;
+    top: 25%;
+    border-radius: 10em;
+    right: 15%;
+    font-family: "Yuppy SC", serif;
+    color: #7b8ce8;
+}
+.input2 {
+    position: absolute;
+    width: 35%;
+    top: 47%;
+    border-radius: 10em;
+    right: 15%;
+    font-family: "Yuppy SC", serif;
+    font-size: 100%;
+    color: #c266cf;
+}
+.start{
+    position: absolute;
+    width: 40%;
+    height: 20%;
+    top: 70%;
+    border-radius: 10em;
+    right: 25%;
+    font-family: "Yuppy SC", serif;
+    color: white;
+    background:linear-gradient(to bottom, #7b8ce8,#c266cf);
+}
+.start-word{
+    position: absolute;
+    top: 74%;
+    right: 40%;
+    font-family: "Yuppy SC",serif;
+    font-size: xx-large;
+    color: white;
+    cursor: pointer;
+}
+.button1{
+    height: 50%;
+    width: 20%;
+}
+.ppp1{
+    position: absolute;
+    bottom: 33%;
+    right: 30%;
+    font-family: "Yuppy SC",serif;
+    font-size: xx-large;
+    color: red;
+}
+/* 小屏幕（平板，大于等于768px） */
+@media (min-width: 100px) {
+    .title1.title2 {
+        font-size: 13px;
+    }
+
+    .title3.content1.content2 {
+        font-size: 8px;
+    }
+}
+@media (min-width: 700px) {
+    .title1.title2 {
+        font-size: 26px;
+    }
+
+    .title3.content1.content2 {
+        font-size: 16px;
+    }
+}
+/* 中等屏幕（桌面显示器，大于等于992px） */
+@media (min-width: 992px) {
+    .title1.title2{
+        font-size:28px;
+    }
+    .title3.content1.content2{
+        font-size: 17px;
+    }
+}

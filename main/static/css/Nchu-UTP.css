@@ -1,0 +1,174 @@
+
+body{
+    background-color: #eaeaea;
+    color: #eaeaea;
+}
+.body-all{
+    background-color: #eaeaea;
+    color: #eaeaea;
+}
+.background-top{
+    background-color: #dcc5b9;
+    border-radius: 0 0 3% 3%;
+    padding-bottom: 50%;
+    margin-bottom: 6%;
+}
+.top-div{
+    position: absolute;
+}
+.logo{
+    width: 27%;
+    margin-left: 3%;
+    margin-top: 5%;
+    margin-bottom: 4%;
+}
+.search{
+    width: 96%;
+    height: 9%;
+    margin: 0 auto;
+    text-align:center;
+    vertical-align:middle
+}
+input::-ms-input-placeholder{
+    text-align: center;
+    font-size: 4%;
+    font-family: "Libian SC", serif;
+}
+input::-webkit-input-placeholder {
+    text-align: center;
+    font-size: 4%;
+    font-family: "Libian SC", serif
+}
+.search-img{
+    width: 5%;
+    margin-left: 21%;
+    margin-top: 16%;
+    position: absolute;
+}
+.banner-div{
+    margin: 4% auto 0;
+    text-align: center;
+}
+.banner{
+    width: 96%;
+}
+.mid{
+    width: 20%;
+}
+.mid2{
+    text-align: center;
+    margin-left: 19%;
+}
+.mid3{
+    margin-left: 18%;
+}
+.adv-div{
+    margin: 4% auto 0;
+    width: 96%;
+    height: 46%;
+    border-radius: 3%;
+    background-color: white;
+    color: white;
+}
+.adv-left{
+    width: 46%;
+    margin-top: 4%;
+    margin-right: 7%;
+    margin-bottom: 4%;
+    float: left;
+}
+.adv-top{
+    width: 45%;
+    margin-top: 4%;
+}
+.adv-bot-left{
+    width: 21%;
+    margin-right: 2%;
+    margin-top: 3%;
+    margin-bottom: 4%;
+}
+.adv-bot-right{
+    width: 21%;
+    margin-top: 3%;
+    margin-bottom: 4%;
+}
+.title-div{
+    width: 96%;
+    margin: 4% auto 0;
+    background-color: #a7a3b8;
+    color: #a7a3b8;
+    border-radius: 3%;
+}
+.title-img{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 21%;
+}
+.good-div{
+    width: 96%;
+    margin: 4% auto 0;
+    background-color: white;
+    border-radius: 3%;
+}
+.good-img-div{
+
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+.good-img{
+    width: 29%;
+}
+.good-img1{
+    margin-left: 2%;
+    margin-right: 4%;
+}
+.good-img2{
+    margin-right: 4%;
+}
+.good-title-div{
+    color: black;
+    font-size: 135%;
+}
+.good-price-div{
+}
+.price-icon{
+    color: #e74b48;
+    font-size: 100%;
+    float: left;
+    margin-right: 1%;
+}
+.price-num{
+    color: #e74b48;
+    font-size: 150%;
+    float: left;
+}
+.good-position{
+    float: right;
+    color: #797979;
+    font-size: 100%;
+}
+.page-bottom{
+    margin-top: 10%;
+}
+.navigation-div{
+    margin-top: 4%;
+}
+.navigation{
+    width: 6%;
+}
+.navi1{
+    margin-left: 15%;
+    float: left;
+}
+.navi2{
+    margin-left: 15%;
+    float: left;
+}
+.navi3{
+    margin-right: 15%;
+    float: right;
+}
+.navi4{
+    margin-right: 15%;
+    float: right;
+}

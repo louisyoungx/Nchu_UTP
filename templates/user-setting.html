@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ZH-CN">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>设置</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href={% static "css/reset-u.css" %}>
+    <link rel="stylesheet" href={% static "css/standby.css" %}>
+    <link rel="stylesheet" href={% static "css/swiper.min.css" %}>
+    <link rel="SHORTCUT ICON" href="{% static "image/favicon.ico" %}"/>
+    <link rel="stylesheet" type="text/css" href={% static "css/mine.css" %}/>
+    <style>
+
+        body html{
+            color:#f4f4f4;
+            background:#fff;
+            max-width: 667px!important;
+            text-align: start!important;
+        }
+        .head{
+            margin-top: 1rem!important;
+            height: 8rem;
+            text-align: start!important;
+            background-image: url("{% static 'image/UTP-background.png' %}");
+            }
+        .user-head img{
+            width: 3.5rem;
+            height: 3.5rem;
+            margin-left: 0.27rem!important;
+            margin-top: 0.25rem;
+            border-radius: 2.5rem;
+        }
+        .my-info{
+            font-size: 1.5rem!important;
+        }
+        .pro-info {max-width:644px;margin: 0 auto;z-index: 101;position: fixed;bottom: 50px;right: 0;left: 0;height: 50px;line-height: 49px;background: #f4f4f4;text-align: center}
+        .pro-info div {text-align: right;}
+        .pro-info span {font-size: 14px;color: #363636;}
+        .pro-info em {color: #bb0101;}
+        .pro-info a {display: inline-block;width: 92%;height: 42px;margin:0 12px 0 6px;line-height: 42px;border-radius: 5px;font-size: 12px;color: #fff;background: #bb0101;text-align: center;}
+
+    </style>
+    <script src={% static "js/jquery.min.js" %}></script>
+    <script>
+        $(function () {
+            var status = '{{ status }}';
+            var username = '{{ username }}';
+            if (status == '1'){
+                $(".index").attr('href','{% url 'user:info' %}');
+                $(".head-span").html(username);
+                $(".my-info").html('返回 >');
+                $(".my-info").attr('href','{% url 'main:mine' %}');
+            }
+            else {
+                $(".head-span").attr('class','head-span-before');
+            }
+        })
+    </script>
+</head>
+    {% csrf_token %}
+	<body>
+        <div class="head top-inside status mrl12 mb12 radius8 box-shadow">
+            <div class="head-container container">
+                <div class="user-head">
+                    <img alt="" src={% static "image/mine/head.png" %}  />
+                </div>
+                <a class="index" href={% url "main:index" %}>
+                    <span class="head-span">登录/注册</span>
+                </a>
+                <br><a class="my-info"></a>
+            </div>
+        </div>
+		<section>
+			<div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
+				<a href="" class="info-list clearfix">
+					<div class="pull-left">修改密码</div>
+					<div class="pull-right">更改<i class="iconfont icon-youjianhao"></i></div>
+				</a>
+				<a href="" class="info-list clearfix box-shadow">
+					<div class="pull-left">修改绑定邮箱</div>
+					<div class="pull-right">example@example.com<i class="iconfont icon-youjianhao"></i></div>
+				</a>
+                <section class="pro-info">
+                    <div style="text-align: center">
+                        <a class="ajax-exit">退出登陆</a>
+                    </div>
+                </section>
+			</div>
+		</section>
+		<script src={% static "js/jquery-1.10.2.min.js" %}></script>
+    <script>
+        $(function () {
+            $('.ajax-exit').click(function () {
+                var setting = 'exit';
+                var csrfmiddlewaretoken = '{{ csrf_token }}';
+                $.ajax({
+                    url:{% url 'user:setting' %},
+                    type:'post',
+                    dataType:'json',
+                    data:{
+                        'setting':setting,
+                        'csrfmiddlewaretoken':csrfmiddlewaretoken,
+                    }
+                }).success(function (data) {
+                    if(data.status == 1){
+                        location.href = '/mine'
+                    }
+                })
+            })
+        })
+    </script>
+
+	</body>
+
+</html>

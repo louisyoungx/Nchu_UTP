@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>昌航有物（校内二手交易平台）</title>
+    <link rel="SHORTCUT ICON" href="{% static "image/favicon.ico" %}"/>
+    <link rel="stylesheet" href={% static "css/Reset.css" %}>
+    <link rel="stylesheet" href={% static "css/bootstrap.css" %}>
+    <link rel="stylesheet" href={% static "css/bootstrap-theme.css" %}>
+    <link rel="stylesheet" href={% static "css/Nchu-UTP.css" %}>
+</head>
+<body>
+
+<!--头部-->
+
+<div class="container-fluid body-all">
+    <div class="top-div">
+
+        <!--表单-->
+        <label class="container">
+            <!--<img src="image/search.png" class="search-img" alt="">-->
+
+            <!--昌航有物logo-->
+            <a href="#">
+                <img class="logo" alt="" src={% static "image/logo.png" %}  >
+            </a>
+
+            <!--搜索框-->
+            <input type="text" class="form-control search" placeholder="搜索商品，千款好物等你来搜">
+
+        </label>
+
+        <!--旗帜轮播图-->
+        <div class="banner-div">
+            <a href="#">
+                <img  class="banner" alt="" src={% static "image/banner.png" %}>
+            </a>
+        </div>
+
+    </div>
+
+    <!--上部背景-->
+    <div class="jumbotron background-top"></div>
+
+</div>
+
+
+<!--下部-->
+
+<div class="container-fluid body-all">
+
+    <!--优势宣传模块-->
+    <div class="container mid-div">
+        <img class="mid mid1" alt=""  src={% static "image/mid-xnjy.png" %}>
+        <img class="mid mid2" alt="" src={% static "image/mid-dmys.png" %}>
+        <img class="mid mid3" alt="" src={% static "image/mid-xyrz.png" %}>
+    </div>
+
+    <!--广告模块-->
+    <div class="container adv-div">
+        <a href="#"><img  class="adv adv-left" alt="" src={% static "image/adv-drink.png" %}></a>
+        <a href="#"><img class="adv adv-top" alt="" src={% static "image/adv-food.png" %} ></a>
+        <a href="#"><img  class="adv adv-bot-left" alt="" src={% static "image/adv-plant.png" %}></a>
+        <a href="#"><img  class="adv adv-bot-right" alt="" src={% static "image/adv-snack.png" %}></a>
+    </div>
+
+    <!--商品模块-->
+    <div>
+        <!--标题-->
+        <div class="container title-div">
+            <img  class="title-img" alt="" src={% static "image/title-img.png" %}>
+        </div>
+
+        <!--商品卡片-->
+        <div class="container good-div">
+            <div class="good-img-div">
+                <a href="#"><img  class="good-img good-img1" alt="" src={% static "image/good-img1.png" %}></a>
+                <a href="#"><img  class="good-img good-img2" alt="" src={% static "image/good-img2.png" %}></a>
+                <a href="#"><img  class="good-img good-img3" alt="" src={% static "image/good-img3.png" %}></a>
+            </div>
+
+            <!--商品标题-->
+            <a href="#">
+                <div class="container good-title-div">
+                    <p>Vans鞋，9新，图书馆面交</p>
+                </div>
+            </a>
+
+            <!--商品价格-->
+            <div class="container good-price-div">
+                <div class="price-icon">
+                    <p>¥</p>
+                </div>
+                <div class="price-num">
+                    <p>150</p>
+                </div>
+
+                <!--商品发布地点-->
+                <div class="good-position">
+                    <p>发布于：测光学院-17栋</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="container good-div">
+            <div class="good-img-div">
+                <a href="#"><img class="good-img good-img1" alt="" src={% static "image/good-img1.png" %}></a>
+                <a href="#"><img class="good-img good-img2" alt="" src={% static "image/good-img2.png" %}></a>
+                <a href="#"><img class="good-img good-img3" alt="" src={% static "image/good-img3.png" %}></a>
+            </div>
+            <a href="#">
+                <div class="container good-title-div">
+                    <p>Vans鞋，9新，图书馆面交</p>
+                </div>
+            </a>
+            <div class="container good-price-div">
+                <div class="price-icon">
+                    <p>¥</p>
+                </div>
+                <div class="price-num">
+                    <p>150</p>
+                </div>
+                <div class="good-position">
+                    <p>发布于：测光学院-17栋</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container good-div">
+            <div class="good-img-div">
+                <a href="#"><img class="good-img good-img1" alt="" src={% static "image/good-img1.png" %}></a>
+                <a href="#"><img class="good-img good-img2" alt="" src={% static "image/good-img2.png" %}></a>
+                <a href="#"><img class="good-img good-img3" alt="" src={% static "image/good-img3.png" %}></a>
+            </div>
+            <a href="#">
+                <div class="container good-title-div">
+                    <p>Vans鞋，9新，图书馆面交</p>
+                </div>
+            </a>
+            <div class="container good-price-div">
+                <div class="price-icon">
+                    <p>¥</p>
+                </div>
+                <div class="price-num">
+                    <p>150</p>
+                </div>
+                <div class="good-position">
+                    <p>发布于：测光学院-17栋</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container good-div">
+            <div class="good-img-div">
+                <a href="#"><img class="good-img good-img1" alt="" src={% static "image/good-img1.png" %}></a>
+                <a href="#"><img class="good-img good-img2" alt="" src={% static "image/good-img2.png" %}></a>
+                <a href="#"><img class="good-img good-img3" alt="" src={% static "image/good-img3.png" %}></a>
+            </div>
+            <a href="#">
+                <div class="container good-title-div">
+                    <p>Vans鞋，9新，图书馆面交</p>
+                </div>
+            </a>
+            <div class="container good-price-div">
+                <div class="price-icon">
+                    <p>¥</p>
+                </div>
+                <div class="price-num">
+                    <p>150</p>
+                </div>
+                <div class="good-position">
+                    <p>发布于：测光学院-17栋</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container good-div">
+            <div class="good-img-div">
+                <a href="#"><img class="good-img good-img1" alt="" src={% static "image/good-img1.png" %}></a>
+                <a href="#"><img class="good-img good-img2" alt="" src={% static "image/good-img2.png" %}></a>
+                <a href="#"><img class="good-img good-img3" alt="" src={% static "image/good-img3.png" %}></a>
+            </div>
+            <a href="#">
+                <div class="container good-title-div">
+                    <p>Vans鞋，9新，图书馆面交</p>
+                </div>
+            </a>
+            <div class="container good-price-div">
+                <div class="price-icon">
+                    <p>¥</p>
+                </div>
+                <div class="price-num">
+                    <p>150</p>
+                </div>
+                <div class="good-position">
+                    <p>发布于：测光学院-17栋</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container good-div">
+            <div class="good-img-div">
+                <a href="#"><img class="good-img good-img1" alt="" src={% static "image/good-img1.png" %}></a>
+                <a href="#"><img class="good-img good-img2" alt="" src={% static "image/good-img2.png" %}></a>
+                <a href="#"><img class="good-img good-img3" alt="" src={% static "image/good-img3.png" %}></a>
+            </div>
+            <a href="#">
+                <div class="container good-title-div">
+                    <p>Vans鞋，9新，图书馆面交</p>
+                </div>
+            </a>
+            <div class="container good-price-div">
+                <div class="price-icon">
+                    <p>¥</p>
+                </div>
+                <div class="price-num">
+                    <p>150</p>
+                </div>
+                <div class="good-position">
+                    <p>发布于：测光学院-17栋</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container good-div">
+            <div class="good-img-div">
+                <a href="#"><img class="good-img good-img1" alt="" src={% static "image/good-img1.png" %}></a>
+                <a href="#"><img class="good-img good-img2" alt="" src={% static "image/good-img2.png" %}></a>
+                <a href="#"><img class="good-img good-img3" alt="" src={% static "image/good-img3.png" %}></a>
+            </div>
+            <a href="#">
+                <div class="container good-title-div">
+                    <p>Vans鞋，9新，图书馆面交</p>
+                </div>
+            </a>
+            <div class="container good-price-div">
+                <div class="price-icon">
+                    <p>¥</p>
+                </div>
+                <div class="price-num">
+                    <p>150</p>
+                </div>
+                <div class="good-position">
+                    <p>发布于：测光学院-17栋</p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <!--填补底部空白-->
+    <div class="page-bottom"></div>
+
+</div>
+
+<!--底部导航栏-->
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="navigation-div">
+        <a href="#"><img alt="" class="navigation navi1" src={% static "image/nav-home.png" %}></a>
+        <a href="{% url 'main:class' %}"><img alt="" class="navigation navi2" src={% static "image/nav-menu.png" %}></a>
+        <a href="{% url 'main:cart' %}"><img alt="" class="navigation navi4" src={% static "image/nav-cart.png" %}></a>
+        <a href="{% url 'main:mine' %}"><img alt="" class="navigation navi3" src={% static "image/nav-people.png" %}></a>
+    </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>个人中心</title>
+    <link rel="SHORTCUT ICON" href="{% static "image/favicon.ico" %}"/>
+    <link rel="stylesheet" type="text/css" href={% static "css/mine.css" %}/>
+    <link rel="stylesheet" type="text/css" href={% static "css/navigation.css" %}>
+    <style>
+        html{
+            color:#f4f4f4;
+            background:#fff;
+        }
+        .head{
+            margin-top: 1rem!important;
+            height: 8rem;
+            background-image: url("{% static 'image/UTP-background.png' %}");
+            }
+    </style>
+    <script src={% static "js/jquery.min.js" %}></script>
+    <script>
+        $(function () {
+            var status = '{{ status }}';
+            var username = '{{ username }}';
+            var url = '{% url 'user:page' %}'+'/'+username;
+            if (status == '1'){
+                $(".index").attr('href', url);
+                $(".head-span").html(username);
+                $(".my-info").html('我的资料 >');
+                $(".my-info").attr('href','{% url 'user:info' %}');
+            }
+            else {
+                $(".head-span").attr('class','head-span-before');
+            }
+        })
+    </script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="head top-inside status mrl12 mb12 radius8 box-shadow">
+        <div class="head-container container">
+            <div class="user-head">
+                <img alt="" src={% static "image/mine/head.png" %}  />
+            </div>
+            <a class="index" href={% url "main:index" %}>
+                <span class="head-span">登录/注册</span>
+            </a>
+            <br><a class="my-info"></a>
+        </div>
+    </div>
+    {% comment %}
+    <div class="Orderform container">
+        <a href="#">
+            <span class="Orderform-span1">我的订单</span>
+        </a>
+        <a href="#">
+            <span class="Orderform-span2">
+                全部订单&nbsp;
+                <div class="arrows"></div>
+            </span>
+        </a>
+    </div>
+    {% endcomment %}
+    <div class="top-inside status white  mrl12 mb12 radius8 box-shadow">
+			<div class="show-it choice-box">
+				<a href={% url 'order:list' %}><strong>我的订单</strong><i class="iconfont pull-right"></i><span class="pull-right">查看全部订单 ></span></a>
+			</div>
+		</div>
+    <div class="pay-take-exchange top-inside status white  mrl12 mb12 radius8 box-shadow">
+        <a href="#"><div class="pay">
+            <div class="pay-img">
+                <img src={% static "image/mine/dfk.png" %} width="100%" height="100%" />
+            </div>
+            <span>待付款</span>
+        </div></a>
+        <a href="#"><div class="pay">
+            <div class="pay-img">
+                <img src={% static "image/mine/dsh.png" %} width="100%" height="100%" />
+            </div>
+            <span>待收货</span>
+        </div></a>
+        <a href="#"><div class="pay">
+            <div class="pay-img">
+                <img src={% static "image/mine/thx.png" %} width="100%" height="100%" />
+            </div>
+            <span>退换修</span>
+        </div></a>
+    </div>
+    <div class="space"></div>
+    <div class="two-chose top-inside status white  mrl12 mb12 radius8 box-shadow">
+        <a href={% url 'user:favor' %}><div class="chose-top">
+            <div class="tubiao">
+                <img src={% static "image/mine/hyzx.png" %}/>
+            </div>
+            <div class="top-font">
+                <span>
+                    我的收藏
+                    <div class="chose-arrows"></div>
+                </span>
+            </div>
+        </div></a>
+        <a href="#"><div class="chose-bottom">
+            <div class="tubiao">
+                <img src={% static "image/mine/wdyh.png" %} />
+            </div>
+            <div class="bottom-font">
+                <span>
+                    我的优惠
+                    <div class="chose-arrows"></div>
+                </span>
+            </div>
+        </div></a>
+    </div>
+    <div class="space"></div>
+    <div class="two-chose top-inside status white  mrl12 mb12 radius8 box-shadow">
+        <a href="#"><div class="chose-top">
+            <div class="tubiao">
+                <img src={% static "image/mine/fwzx.png" %}/>
+            </div>
+            <div class="top-font">
+                <span>
+                    服务中心
+                    <div class="chose-arrows"></div>
+                </span>
+            </div>
+        </div></a>
+        <a href="#"><div class="chose-bottom">
+            <div class="tubiao">
+                <img src={% static "image/mine/xmyh.png" %}/>
+            </div>
+            <div class="bottom-font">
+                <span>
+                    校园优惠
+                    <div class="chose-arrows"></div>
+                </span>
+            </div>
+        </div></a>
+    </div>
+    <div class="space"></div>
+    <div class="one-chose top-inside status white  mrl12 mb12 radius8 box-shadow">
+        <a href="#"><div class="chose-bottom">
+            <div class="tubiao">
+                <img src={% static "image/mine/fmtd.png" %}/>
+            </div>
+            <div class="bottom-font">
+                <span>
+                    F码通道
+                    <div class="chose-arrows"></div>
+                </span>
+            </div>
+        </div></a>
+    </div>
+    <div class="space"></div>
+    <div class="one-chose top-inside status white  mrl12 mb12 radius8 box-shadow">
+        <a href="{% url 'user:setting' %}"><div class="chose-bottom">
+            <div class="tubiao">
+                <img src={% static "image/mine/sz.png" %}/>
+            </div>
+            <div class="bottom-font">
+                <span>
+                    设置
+                    <div class="chose-arrows"></div>
+                </span>
+            </div>
+        </div></a>
+    </div>
+    <div class="big-space"></div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container navigation-div">
+            <a href="{% url 'main:home' %}"><img alt="" class="navigation navi1" src={% static "image/nav-home.png" %}></a>
+            <a href="{% url 'main:class' %}"><img alt="" class="navigation navi2" src={% static "image/nav-menu.png" %}></a>
+            <a href="{% url 'main:cart' %}"><img alt="" class="navigation navi4" src={% static "image/nav-cart.png" %}></a>
+            <a href="#"><img alt="" class="navigation navi3" src={% static "image/nav-people.png" %}></a>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

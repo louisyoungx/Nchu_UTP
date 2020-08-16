@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ZH-CN">
+{% load static %}
+	<head>
+		<meta charset="UTF-8">
+		<title>个人资料</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href={% static "css/reset-u.css" %}>
+		<link rel="stylesheet" href={% static "css/standby.css" %}>
+		<link rel="stylesheet" href={% static "css/swiper.min.css" %}>
+        <link rel="SHORTCUT ICON" href="{% static "image/favicon.ico" %}"/>
+        <link rel="stylesheet" type="text/css" href={% static "css/mine.css" %}/>
+        <style>
+
+            body html{
+                color:#f4f4f4;
+                background:#fff;
+                max-width: 667px!important;
+                text-align: start!important;
+            }
+            .head{
+                margin-top: 1rem!important;
+                height: 8rem;
+                text-align: start!important;
+                background-image: url("{% static 'image/UTP-background.png' %}");
+                }
+            .user-head img{
+                width: 3.5rem;
+                height: 3.5rem;
+                margin-left: 0.27rem!important;
+                margin-top: 0.25rem;
+                border-radius: 2.5rem;
+            }
+            .my-info{
+                font-size: 1.5rem!important;
+            }
+            .middle-info{
+                color: #adadad;
+                margin-left: 1.5rem;
+            }
+        </style>
+        <script src={% static "js/jquery.min.js" %}></script>
+        <script>
+            $(function () {
+                var status = '{{ status }}';
+                var username = '{{ username }}';
+                if (status == '1'){
+                    $(".index").attr('href','{% url 'user:info' %}');
+                    $(".head-span").html(username);
+                    $(".my-info").html('返回 >');
+                    $(".my-info").attr('href','{% url 'main:mine' %}');
+                }
+                else {
+                    $(".head-span").attr('class','head-span-before');
+                }
+            })
+        </script>
+	</head>
+	<body>
+        <div class="head top-inside status mrl12 mb12 radius8 box-shadow">
+            <div class="head-container container">
+                <div class="user-head">
+                    <img alt="" src={% static "image/mine/head.png" %}  />
+                </div>
+                <a class="index" href={% url "main:index" %}>
+                    <span class="head-span">登录/注册</span>
+                </a>
+                <br><a class="my-info"></a>
+            </div>
+        </div>
+		<section>
+			<div class="item mt12 mb12 top-inside status mrl12 mb12 radius8 box-shadow">
+				<a href="" class="user-info clearfix">
+					<div class="pull-left left">头像</div>
+					<div class="pull-right right">
+						<img  alt="" src={% static "image/standby/brand.jpg" %}/>
+						<i class="iconfont icon-youjianhao"></i>
+					</div>
+				</a>
+			</div>
+            <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
+				<a href="" class="info-list clearfix">
+					<div class="pull-left">签名</div>
+                    <i class="middle-info" id="signature">牛逼，非常牛逼,牛逼爆了啊这个······</i>
+					<div class="pull-right">更改<i class="iconfont icon-youjianhao"></i></div>
+				</a>
+			</div>
+            <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
+				<a href="" class="info-list clearfix">
+					<div class="pull-left">昵称</div>
+                    <i class="middle-info" id="nickname">小明</i>
+					<div class="pull-right">修改<i class="iconfont icon-youjianhao"></i></div>
+				</a>
+			</div>
+            <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
+				<a href="" class="info-list clearfix">
+					<div class="pull-left">生日</div>
+                    <i class="middle-info" id="birthday">2020.02.15</i>
+					<div class="pull-right">修改<i class="iconfont icon-youjianhao"></i></div>
+				</a>
+			</div>
+            <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
+				<a href="" class="info-list clearfix">
+					<div class="pull-left">年级</div>
+                    <i class="middle-info" id="grade">2018级</i>
+					<div class="pull-right">添加<i class="iconfont icon-youjianhao"></i></div>
+				</a>
+			</div>
+            <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
+				<a href="" class="info-list clearfix">
+					<div class="pull-left">学院</div>
+                    <i class="middle-info" id="college">测光学院</i>
+					<div class="pull-right">添加<i class="iconfont icon-youjianhao"></i></div>
+				</a>
+			</div>
+            <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
+				<a href="" class="info-list clearfix">
+					<div class="pull-left">寝室</div>
+                    <i class="middle-info" id="apartment">17栋</i>
+					<div class="pull-right">添加<i class="iconfont icon-youjianhao"></i></div>
+				</a>
+			</div>
+
+		</section>
+		<script src={% static "js/jquery-1.10.2.min.js" %}></script>
+
+	</body>
+
+</html>

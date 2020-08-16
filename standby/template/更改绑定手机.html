@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>更改绑定手机</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href={% static "css/reset-u.css" %}>
+        <link rel="stylesheet" href={% static "css/standby.css" %}>
+        <link rel="stylesheet" href={% static "css/swiper.min.css" %}>
+	</head>
+
+	<body>
+		<section class="head">
+			<h1>更改绑定手机</h1>
+			<a class="more" href="javascript:void(0);"><i class="iconfont icon-fenxiang"></i></a>
+		</section>
+		<form class="mt12 ml-r12">
+			<div class="mb12 align-left">
+				<span class="font-hui">当前绑定手机号码：121121xxxxxxx</span>
+			</div>
+			<div class="getCode-list clearfix">
+				<div class="input-list pull-left">
+					<input type="text" placeholder="请输入验证码" />
+				</div>
+				<button class="pull-right btn-getCode">获取验证码</button>
+			</div>
+			<div class="input-list">
+				<input type="text" placeholder="设置密码" />
+			</div>
+			<button class="btn-large btn-submit m0">提交</button>
+		</form>
+
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/common.js"></script>
+
+	</body>
+
+</html>

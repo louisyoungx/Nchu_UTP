@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>重置密码</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href={% static "css/reset-u.css" %}>
+        <link rel="stylesheet" href={% static "css/standby.css" %}>
+        <link rel="stylesheet" href={% static "css/swiper.min.css" %}>
+	</head>
+
+	<body>
+		<section class="head">
+			<h1>重置密码</h1>
+			<a class="more" href="javascript:void(0);"><i class="iconfont icon-fenxiang"></i></a>
+		</section>
+		<form class="mt12 ml-r12">
+
+			<div class="input-list box-shadow">
+				<input type="text" placeholder="请输入手机号码" />
+			</div>
+			<div class="getCode-list clearfix">
+				<div class="input-list pull-left box-shadow">
+					<input type="text" placeholder="请输入验证码" />
+				</div>
+				<button class="pull-right btn-getCode">获取验证码</button>
+			</div>
+			<div class="input-list box-shadow">
+				<input type="text" placeholder="新密码" />
+			</div>
+			<div class="input-list box-shadow">
+				<input type="text" placeholder="确认密码" />
+			</div>
+			<div class="mb12 align-left">
+				<label class="piaochecked">
+					<input type="checkbox" name="" id="" value=""  class="radioclass input"/>
+					<span></span>
+				</label>
+				<span class="font-hui">注册即表示已阅读并同意用户注册协议</span>
+			</div>
+			<button class="btn-large btn-submit m0">完成</button>
+		</form>
+
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/common.js"></script>
+
+	</body>
+
+</html>

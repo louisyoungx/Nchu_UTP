@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ZH-CN">
+{% load static %}
+<head>
+	<meta charset="UTF-8">
+	<title>我的订单</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href={% static "css/reset-u.css" %}>
+	<link rel="stylesheet" href={% static "css/standby.css" %}>
+	<link rel="stylesheet" href={% static "css/swiper.min.css" %}>
+    <link rel="stylesheet" href={% static "css/bootstrap.css" %}>
+    <link rel="stylesheet" href={% static "css/bootstrap-theme.css" %}>
+    <link rel="stylesheet" href={% static "css/Nchu-UTP.css" %}>
+    <style>
+        .title-img{
+            margin-top: 5%;
+            margin-bottom: 5%;
+            width: 21%;
+        }
+        .title-div{
+            width: 96%;
+            margin: 4% auto 0;
+            background-color: #deaec0;
+            color: #deaec0;
+            border-radius: 3%;
+        }
+        .collection .text strong {line-height: 1;font-size: 16px;color: #ef8ba7;}
+        .main-number div i:last-child {right: 0;background: #ef8ba7;}
+        .pro-info {z-index: 101;position: fixed;bottom: 50px;right: 0;left: 0;height: 50px;line-height: 49px;background: none;}
+        .pro-info em {color: #ef8ba7;}
+        .pro-info a {
+            display: inline-block;
+            width: 30%;
+            height: 42px;
+            margin:0 12px 0 6px;
+            line-height: 42px;
+            border-radius: 5px;
+            font-size: 12px;
+            color: #f4f4f4;
+            background: #ef8ba7;
+            text-align: center;
+        }
+        .dix-bottom{
+            background: #f4f4f4;
+            bottom: 0;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .Libian{
+            font-size: large;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            color: white;
+            font-family: "Libian SC", serif
+        }
+    </style>
+</head>
+<body>
+    <div class="container title-div">
+        <p  class="title-img Libian" >我的订单</p>
+    </div>
+	<section class="delete-box">
+		<div class="delete clearfix box-shadow">
+			<i class="box" data-all="ok"></i>
+			<strong>全选</strong>
+			<a class="pull-right" href="javascript:void(0);" onclick="code.open(this);"><i class="iconfont icon-shanchu"></i>删除</a>
+		</div>
+	</section>
+	<section class="collection-box">
+
+		<div class="collection clearfix box-shadow">
+			<div class="view-box" data-key="no">
+				<div class="icon"><i class=""></i></div>
+				<div class="imgs"><img src={% static "image/standby/f_show.jpg" %} alt="收藏展示" title="收藏展示"></div>
+				<div class="text">
+					<p class="text-ell2">无印良品亚麻布料抱枕三色可选蓝白纹黄白条纹灰白条纹商品...</p>
+					<div class="main-number dis-flex" >
+						<div class="flex1">
+							<strong>¥299</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btns-box">
+				<div class="btns">
+					<a href="javascript:void(0);">删除</a>
+				</div>
+			</div>
+		</div>
+		<div class="collection clearfix box-shadow">
+			<div class="view-box" data-key="no">
+				<div class="icon"><i class=""></i></div>
+				<div class="imgs"><img src={% static "image/standby/f_show.jpg" %} alt="收藏展示" title="收藏展示"></div>
+				<div class="text">
+					<p class="text-ell2">无印良品亚麻布料抱枕三色可选蓝白纹黄白条纹灰白条纹商品...</p>
+					<div class="main-number dis-flex" >
+						<div class="flex1">
+							<strong>¥299</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btns-box">
+				<div class="btns">
+					<a href="javascript:void(0);">删除</a>
+				</div>
+			</div>
+		</div>
+		<div class="collection clearfix box-shadow">
+			<div class="view-box" data-key="no">
+				<div class="icon"><i class=""></i></div>
+				<div class="imgs"><img src={% static "image/standby/f_show.jpg" %} alt="收藏展示" title="收藏展示"></div>
+				<div class="text">
+					<p class="text-ell2">无印良品亚麻布料抱枕三色可选蓝白纹黄白条纹灰白条纹商品...</p>
+					<div class="main-number dis-flex" >
+						<div class="flex1">
+							<strong>¥299</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btns-box">
+				<div class="btns">
+					<a href="javascript:void(0);">删除</a>
+				</div>
+			</div>
+		</div>
+		<div class="collection clearfix box-shadow">
+			<div class="view-box" data-key="no">
+				<div class="icon"><i class=""></i></div>
+				<div class="imgs"><img src={% static "image/standby/f_show.jpg" %} alt="收藏展示" title="收藏展示"></div>
+				<div class="text">
+					<p class="text-ell2">无印良品亚麻布料抱枕三色可选蓝白纹黄白条纹灰白条纹商品...</p>
+					<div class="main-number dis-flex" >
+						<div class="flex1">
+							<strong>¥299</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btns-box">
+				<div class="btns">
+					<a href="javascript:void(0);">删除</a>
+				</div>
+			</div>
+		</div>
+		<div class="collection clearfix box-shadow">
+			<div class="view-box" data-key="no">
+				<div class="icon"><i class=""></i></div>
+				<div class="imgs"><img src={% static "image/standby/f_show.jpg" %} alt="收藏展示" title="收藏展示"></div>
+				<div class="text">
+					<p class="text-ell2">无印良品亚麻布料抱枕三色可选蓝白纹黄白条纹灰白条纹商品...</p>
+					<div class="main-number dis-flex" >
+						<div class="flex1">
+							<strong>¥299</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btns-box">
+				<div class="btns">
+					<a href="javascript:void(0);">删除</a>
+				</div>
+			</div>
+		</div>
+		<div class="collection clearfix box-shadow">
+			<div class="view-box" data-key="no">
+				<div class="icon"><i class=""></i></div>
+				<div class="imgs"><img src={% static "image/standby/f_show.jpg" %} alt="收藏展示" title="收藏展示"></div>
+				<div class="text">
+					<p class="text-ell2">无印良品亚麻布料抱枕三色可选蓝白纹黄白条纹灰白条纹商品...</p>
+					<div class="main-number dis-flex" >
+						<div class="flex1">
+							<strong>¥299</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btns-box">
+				<div class="btns">
+					<a href="javascript:void(0);">删除</a>
+				</div>
+			</div>
+		</div>
+		<div class="collection clearfix box-shadow">
+			<div class="view-box" data-key="no">
+				<div class="icon"><i class=""></i></div>
+				<div class="imgs"><img src={% static "image/standby/f_show.jpg" %} alt="收藏展示" title="收藏展示"></div>
+				<div class="text">
+					<p class="text-ell2">无印良品亚麻布料抱枕三色可选蓝白纹黄白条纹灰白条纹商品...</p>
+					<div class="main-number dis-flex" >
+						<div class="flex1">
+							<strong>¥299</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btns-box">
+				<div class="btns">
+					<a href="javascript:void(0);">删除</a>
+				</div>
+			</div>
+		</div>
+		<div class="collection clearfix box-shadow">
+			<div class="view-box" data-key="no">
+				<div class="icon"><i class=""></i></div>
+				<div class="imgs"><img src={% static "image/standby/f_show.jpg" %} alt="收藏展示" title="收藏展示"></div>
+				<div class="text">
+					<p class="text-ell2">无印良品亚麻布料抱枕三色可选蓝白纹黄白条纹灰白条纹商品...</p>
+					<div class="main-number dis-flex" >
+						<div class="flex1">
+							<strong>¥299</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btns-box">
+				<div class="btns">
+					<a href="javascript:void(0);">删除</a>
+				</div>
+			</div>
+		</div>
+		<div class="collection clearfix box-shadow">
+			<div class="view-box" data-key="no">
+				<div class="icon"><i class=""></i></div>
+				<div class="imgs"><img src={% static "image/standby/f_show.jpg" %} alt="收藏展示" title="收藏展示"></div>
+				<div class="text">
+					<p class="text-ell2">无印良品亚麻布料抱枕三色可选蓝白纹黄白条纹灰白条纹商品...</p>
+					<div class="main-number dis-flex" >
+						<div class="flex1">
+							<strong>¥299</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btns-box">
+				<div class="btns">
+					<a href="javascript:void(0);">删除</a>
+				</div>
+			</div>
+		</div>
+        <br><br><br>
+	</section>
+    <div class="pro-info navbar navbar-default navbar-fixed-bottom dix-bottom" >
+        <div class="container dix-bottom" style="text-align: center">
+            <a href={% url 'main:mine' %} >返回</a><br><br><br>
+        </div>
+    </div>
+    <div></div>
+	<script src={% static "js/jquery-1.10.2.min.js" %}></script>
+	<script src={% static "js/swiper.min.js" %}></script>
+
+</body>
+</html>

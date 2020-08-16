@@ -1,0 +1,205 @@
+
+body{
+	margin: 0;
+	padding: 0;
+}
+.head-container{
+	width: 100%;
+	height: 6rem;
+	opacity: 100%;
+}
+a{
+	text-decoration: none;
+}
+.user-head{
+	width: 4rem;
+	height: 4rem;
+	float: left;
+	margin-left: 1.2rem;
+	margin-top: 1.8rem;
+	border-radius: 2.7rem;
+	background-color: white;
+}
+.user-head img{
+	width: 3.5rem;
+	height: 3.5rem;
+	margin-left: 0.26rem;
+	margin-top: 0.25rem;
+	border-radius: 2.5rem;
+}
+.head-span{
+	display: inline-block;
+	color: white;
+	font-size: 1.5rem;
+	margin-left: 0.6rem;
+	margin-top: 3rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
+}
+.head-span-before{
+	display: inline-block;
+	color: white;
+	font-size: 1.5rem;
+	margin-left: 0.6rem;
+	margin-top: 3.5rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
+}
+.my-info{
+	margin-left: 3rem;
+	font-size: 0.5rem;
+	color: #f0f0f0;
+}
+.Orderform{
+	width: 100%;
+	height: 2.0rem;
+	border-bottom: 1px solid darkgray;
+}
+.Orderform-span1,.Orderform-span2{
+	display: inline-block;
+	color: #3c3c3c;
+	font-size: 13px;
+	margin-left: 1.5rem;
+	margin-top: 0.7rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
+}
+.Orderform-span2{
+	float: right;
+	font-size: 12px;
+	margin-right: 1.5rem;
+}
+.arrows{
+	height: 0.5rem;
+	width: 0.5rem;
+	border-top: 1px solid #3c3c3c;
+	border-right: 1px solid #3c3c3c;
+	float: right;
+	transform: rotate(45deg);
+}
+.pay-take-exchange{
+	height: 5.0rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.pay{
+	width: 3.0rem;
+	height: 3.0rem;
+	font-size: 12px;
+	text-align: center;
+}
+.pay-img{
+	width: 1.5rem;
+	height: 1.5rem;
+	margin-left: 0.75rem;
+	margin-top: 0.15rem;
+}
+.pay span{
+	display: inline-block;
+	margin-top: 0.2rem;
+	color: #3c3c3c;
+}
+.space,.big-space{
+	height: 0.01rem;
+}
+.big-space{
+	height: 3.0rem;
+}
+.two-chose{
+	height: 6.0rem;
+}
+.one-chose{
+	height: 3.0rem;
+}
+.chose-top{
+	width: 100%;
+	height: 3.0rem;
+}
+.tubiao{
+	height: 3.0rem;
+	width: 14%;
+	float: left;
+}
+.tubiao img{
+	width: 1.5rem;
+	height: 1.5rem;
+	margin-left: 0.75rem;
+	margin-top: 0.75rem;
+}
+.top-font,.bottom-font{
+	width: 86%;
+	height: 3.0rem;
+	float: left;
+}
+.top-font{
+
+}
+.top-font span,.bottom-font span{
+	display: inline-block;
+	width: 100%;
+	line-height: 3.0rem;
+	font-size: 14px;
+	color: #3c3c3c;
+}
+.chose-arrows{
+	height: 0.5rem;
+	width: 0.5rem;
+	border-top: 1px solid #3c3c3c;
+	border-right: 1px solid #3c3c3c;
+	float: right;
+	margin-right: 1.0rem;
+	margin-top: 1.2rem;
+	transform: rotate(45deg);
+}
+.foot{
+	height: 3.5rem;
+	width: 100%;
+	background-color: #FFFFFF;
+	overflow: hidden;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-around;
+    font-size: 13px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    box-shadow: 0 -0.1rem 0.1rem gainsboro;
+}
+.foot-chose{
+	width: 2.4rem;
+	height: 2.7rem;
+	margin-top: 0.4rem;
+	text-align: center;
+}
+.chose-tubiao{
+	width: 1.4rem;
+	height: 1.4rem;
+	margin-left: 0.5rem;
+}
+.foot-chose span{
+	font-size: 12px;
+	color: gray;
+}
+.top-inside{
+	margin-top: 3%!important;
+}
+.white {background: #fff!important;}
+.mrl12{margin:0 12px!important;}
+.mb12{margin-bottom: 12px !important;}
+.radius8{border-radius:5px;}
+.box-shadow {box-shadow: 0 0 3px 3px #eee;}
+.show-it{display:block!important}
+.choice-box {line-height: 50px;border-bottom: 1px solid #e5e5e5;text-align: left;}
+.choice-box a {overflow: hidden;display: block;padding: 0 10px;}
+.choice-box strong {font-weight: bold;font-size: 14px;color: #363636;}
+.choice-box i {font-size: 16px;color: #a5a5a5;vertical-align: middle;}
+.choice-box i+span {font-size: 14px;color: #c3c3c3;margin-top: -1px;}
+.iconfont {
+	font-size:16px;
+	font-family:"iconfont" !important;
+	font-style:normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.pull-right {float: right;}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>遇见，昌航有物</title>
+    <link rel="SHORTCUT ICON" href="{% static "image/favicon.ico" %}"/>
+    <link rel="stylesheet" href={% static "css/font-awesome-4.7.0/css/font-awesome.min.css" %}>
+    <link rel="stylesheet" href={% static "css/index.css" %}>
+    <style>
+        body {
+           background-image: url("{% static 'image/login-bg.png' %}");
+           background-position: center;
+           background-size: cover;
+           background-repeat: no-repeat;
+           min-height: 100vh;
+           font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+{% csrf_token %}
+    <div class="materialContainer main">
+        <div class="box">
+            <div class="title">登录</div>
+            <div class="input user">
+                <label for="name">用户名</label>
+                <input type="text" name="name" id="name" value="{{ username }}">
+                <span class="spin"></span>
+            </div>
+            <div class="input pass">
+                <label for="pass">密码</label>
+                <input type="password" name="pass" id="pass">
+                <span class="spin"></span>
+            </div>
+            <br>
+            <div class="message"></div>
+            <div class="button login">
+                <button id="btnAjax">
+                    <span>登录</span>
+                    <i class="fa fa-check"></i>
+                </button>
+            </div>
+            <a href="javascript:" class="pass-forgot">忘记密码？</a>
+        </div>
+
+        <div class="overbox">
+            <div class="material-button alt-2">
+                <span class="shape"></span>
+            </div>
+            <div class="title">注册</div>
+            <div class="input">
+                <label for="regname">用户名</label>
+                <input type="text" name="regname" id="regname">
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="regemail">电子邮箱</label>
+                <input type="text" name="regemail" id="regemail">
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="regpass">密码</label>
+                <input type="password" name="regpass" id="regpass">
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="reregpass">确认密码</label>
+                <input type="password" name="reregpass" id="reregpass">
+                <span class="spin"></span>
+            </div>
+            <div class="title regmsg"></div>
+            <div class="button">
+                <button id="registerAjax">
+                    <span>注册</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src={% static "js/jquery.min.js" %}></script>
+    <script src={% static "js/index.js" %}></script>
+</body>
+<script>
+    $(function () {
+        //绑定Ajax请求click事件
+        $('#btnAjax').click(function () {
+            //获取用户名与密码
+            var username = $('#name').val();
+            var password = $('#pass').val();
+            var csrfmiddlewaretoken = '{{ csrf_token }}';
+            $.ajax({
+                url:'{% url 'main:index' %}',
+                type:'POST',
+                data:{
+                    'type':'login',
+                    'username':username,
+                    'password':password,
+                    'next':'{{ next }}',
+                    'csrfmiddlewaretoken': csrfmiddlewaretoken,
+                },
+                dateType:'json'
+            }).success(function (data) {
+                var divset = $('.click-efect');
+                //Ajax返回值
+                if (data.check == 2){
+                    $('#btnAjax').removeClass('active');
+                    for (var i = 0; i<divset.length;i++) {
+                        divset[i].style.cssText=" background: #fff ";
+                    }
+                    $('.message').html('用户名和密码不能为空');
+                }
+                else if (data.check == 3){
+                    $('#btnAjax').removeClass('active');
+                    for (var i = 0; i<divset.length;i++) {
+                        divset[i].style.cssText=" background: #fff ";
+                    }
+                    $('.message').html(data.errmsg)
+                }
+                else if (data.check == 0){
+                    $('#btnAjax').removeClass('active');
+                    for (var i = 0; i<divset.length;i++) {
+                        divset[i].style.cssText=" background: #fff ";
+                    }
+                    $('.message').html('用户名或密码错误')
+                }
+                else if (data.check == 1){
+                    $('.message').html('欢迎！');
+                    location.href =data.next
+                }
+            })
+        });
+                $('#registerAjax').click(function () {
+            //获取用户名与密码
+            var username = $('#regname').val();
+            var email = $('#regemail').val();
+            var password = $('#regpass').val();
+            var repassword = $('#reregpass').val();
+            var csrfmiddlewaretoken = '{{ csrf_token }}';
+            if (username == "" ){
+                    $('.regmsg').html('用户名密码为空')
+                }
+            else if (password == ""){
+                    $('.regmsg').html('用户名密码为空')
+                }
+            else if (repassword == ""){
+                    $('.regmsg').html('用户名密码为空')
+                }
+            else if (email == ""){
+                    $('.regmsg').html('电子邮箱不能为空')
+                }
+            else if (password != repassword){
+                    $('.regmsg').html('密码不一致')
+                }
+            else {
+                alert("请前往邮箱激活账号--邮件将在10分钟后失效（请注意邮件垃圾箱）");
+                $.ajax({
+                url:'{% url 'main:index' %}',
+                type:'POST',
+                data:{
+                    'type':'register',
+                    'username':username,
+                    'email':email,
+                    'password':password,
+                    'csrfmiddlewaretoken': csrfmiddlewaretoken,
+                },
+                dateType:'json'
+                }).success(function (data) {
+                    //Ajax返回值
+                    if (data.statusCode == 2){
+                        $('.regmsg').html('数据不完整')
+                    }
+                    else if (data.statusCode == 3){
+                        $('.regmsg').html('邮箱格式错误')
+                    }
+                    else if (data.statusCode == 4){
+                        $('.regmsg').html('邮箱已被注册')
+                    }
+                    else if (data.statusCode == 5){
+                        $('.regmsg').html('邮件发送失败')
+                    }
+                    else if (data.statusCode == 0){
+                        $('.regmsg').html('用户名已存在');
+                    }
+                    else if (data.statusCode == 1){
+                        $('.regmsg').html('欢迎！');
+                        location.href ="/index"
+                    }
+                    else{
+                        $('.regmsg').html('创建失败');
+                    }
+                })
+            }
+
+        })
+    })
+</script>
+</html>
