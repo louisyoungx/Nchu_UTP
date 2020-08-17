@@ -132,11 +132,15 @@ USE_TZ = True
 # 静态文件目录
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[
-    os.path.join(BASE_DIR, "/main/static"),
+    os.path.join(BASE_DIR, "main/static"),
 ]
 
+#多媒体文件目录
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "/var/www/louisyoung/media")
+
 #域名设置
-SITE_HOST = 'http://louisyoung.gz2vip.idcfengye.com' # this will reduce the Sites framework db call.
+SITE_HOST ='45.40.234.190 ' # this will reduce the Sites framework db call.
 
 # 邮箱设置
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -181,3 +185,5 @@ TINYMCE_DEFAUT_CONFIG = {
 MEDIA_ROOT = os.path.join(SITE_HOST, 'uploads')
 MEDIA_URL = '/media/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "/var/www/louisyoung/static/")

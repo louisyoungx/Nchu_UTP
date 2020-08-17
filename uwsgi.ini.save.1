@@ -1,0 +1,15 @@
+[uwsgi]
+#socket=172.16.0.6:8000   #（使用nginx连接时，使用socket）
+http=172.16.0.6:8000 
+# （直接做web服务器，使用http）
+chdir=/home/ubuntu/Github/Nchu_UTP
+wsgi-file=Nchu_UTP/wsgi.py
+# 项目中wsgi.py文件的目录，相对于项目根目录
+# 进程个数       
+processes = 8
+# 每个进程worker数
+workers=
+threads=2
+master=True
+pidfile=uwsgi.pid
+daemonize=uswgi.log
