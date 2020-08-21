@@ -6,11 +6,12 @@
 		<title>个人资料</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta name="format-detection" content="telephone=no">
+        <link type="text/css" rel="stylesheet" href={% static "css/layout.css" %}>
 		<link rel="stylesheet" href={% static "css/reset-u.css" %}>
 		<link rel="stylesheet" href={% static "css/standby.css" %}>
 		<link rel="stylesheet" href={% static "css/swiper.min.css" %}>
-        <link rel="SHORTCUT ICON" href="{% static "image/favicon.ico" %}" />
-        <link rel="stylesheet" type="text/css" href={% static "css/mine.css" %} />
+        <link rel="SHORTCUT ICON" href="{% static "image/favicon.ico" %}" >
+        <link rel="stylesheet" type="text/css" href={% static "css/mine.css" %} >
         <style>
 
             body html{
@@ -35,9 +36,26 @@
             .my-info{
                 font-size: 1.5rem!important;
             }
+            .btn_commom{
+                background: #acc0dc;
+                border:1px solid #acc0dc;
+                color:#fff
+            }
             .middle-info{
                 color: #adadad;
                 margin-left: 1.5rem;
+            }
+            .info-item{
+                padding: 10px 0;
+            }
+            .top-inside{
+                cursor: pointer;
+            }
+            .Dontshow{
+                display: none;
+            }
+            .ifshow{
+                display: block;
             }
         </style>
         <script src={% static "js/jquery.min.js" %}></script>
@@ -54,6 +72,14 @@
                 else {
                     $(".head-span").attr('class','head-span-before');
                 }
+                $(".change-head").click(function () {
+                    $(".ifshow").attr('class','Dontshow');
+                    $(".showhead").attr('class','ifshow');
+                });
+                $(".head-back").click(function () {
+                    $(".ifshow").attr('class','showhead');
+                    $(".Dontshow").attr('class','ifshow');
+                })
             })
         </script>
 	</head>
@@ -69,16 +95,16 @@
                 <br><a class="my-info"></a>
             </div>
         </div>
-		<section>
-			<div class="item mt12 mb12 top-inside status mrl12 mb12 radius8 box-shadow">
-				<a href="" class="user-info clearfix">
-					<div class="pull-left left">头像</div>
-					<div class="pull-right right">
-						<img  alt="" src={% static "image/standby/brand.jpg" %}/>
-						<i class="iconfont icon-youjianhao"></i>
-					</div>
-				</a>
-			</div>
+		<section class="ifshow">
+            <div class="change-head item mt12 mb12 top-inside status mrl12 mb12 radius8 box-shadow">
+                <a class="user-info clearfix">
+                    <div class="pull-left left">头像</div>
+                    <div class="pull-right right">
+                        <img class="change-head" alt="" src={% static "image/mine/head.png" %} >
+                        <i class="iconfont icon-youjianhao"></i>
+                    </div>
+                </a>
+            </div>
             <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
 				<a href="" class="info-list clearfix">
 					<div class="pull-left">签名</div>
@@ -121,8 +147,28 @@
 					<div class="pull-right">添加<i class="iconfont icon-youjianhao"></i></div>
 				</a>
 			</div>
-
 		</section>
+        <section class="Dontshow showhead">
+            <form>
+                <div class="wapbox accset">
+                    <dl>
+                        <dt><strong class="wap_title_big">请上传图片：</strong></dt>
+                        <dd>
+                            <div class="uplode_img">
+                                <input type="button" onclick="return false;" class="btn_tip btn_commom" value="上传头像">
+                                <input class="uplodefile" name="userfile" type="file" accept="image/*" autocomplete="off" disableautocomplete="">
+                            </div><br>
+                            <p>图片格式jpg、png、jpeg，大小不超过10MB</p>
+                        </dd>
+                    </dl>
+                    <div class="err_tip error-con" _text="" style="display: none;"><em class="icon_error"></em><span></span></div>
+                </div>
+                <div class="tip_btns">
+                    <!-- <input class="btn_tip btn_commom" type="submit" value="保存"> -->
+                    <a class="btn_tip btn_back head-back" title="取消">取消</a><br><br><br>
+                </div>
+            </form>
+        </section>
 		<script src={% static "js/jquery-1.10.2.min.js" %}></script>
 
 	</body>

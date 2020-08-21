@@ -57,3 +57,9 @@ class SettingView(LoginMixin, View):
         if setting == 'exit':
             logout(request)
             return JsonResponse({'status':1})
+
+
+def upload_head(request):
+    # 获取上传头像的处理对象
+
+    pass
