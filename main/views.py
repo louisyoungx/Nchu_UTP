@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.views import View
 from django.conf import settings
 from itsdangerous import TimedJSONWebSignatureSerializer as tjss, SignatureExpired
+from Nchu_UTP.settings import SITE_URL
 from celeryT.tasks import send_register_active_email
 from user.models import UserInfo
 
@@ -38,10 +39,20 @@ class MineView(View):
         """处理GET请求业务逻辑"""
         if request.user.is_authenticated:
             user = request.user
-            username = user.username
+            queryset = user.Info.all()
+            for li in queryset:
+                info = li
+            nickname = info.nickname
+            try:
+                head = info.head_img
+                avatar = SITE_URL+"media/"+str(head)
+            except:
+                avatar = "image/mine/head.png"
+            nickname = info.nickname
             userLogin = {
                 "status":1,
-                "username":username,
+                "username":nickname,
+                "avatar":avatar,
             }
             return render(request, 'minePage.html', context=userLogin)
         return render(request, 'minePage.html')

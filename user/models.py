@@ -8,7 +8,7 @@ from db.base_model import BaseModel
 # 用户模型类
 class UserInfo(BaseModel):
     '''用户模型类'''
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='所属用户')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='Info', on_delete=models.CASCADE, verbose_name='所属用户')
     trading_place = models.CharField(max_length=20, blank=True, verbose_name='交易地点')
     head_img = models.ImageField(upload_to='head', blank=True, verbose_name='头像')
     nickname = models.CharField(max_length=6, blank=True, verbose_name='昵称')

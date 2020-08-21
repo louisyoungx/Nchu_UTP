@@ -1,9 +1,11 @@
 from django.contrib.auth import logout
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
+from Nchu_UTP.settings import SITE_URL
 from utils.Mixin import LoginMixin
+from user.models import UserInfo
 
 # Create your views here.
 
@@ -24,10 +26,19 @@ class PageView(View):
 class InfoView(LoginMixin, View):
     def get(self, request):
         user = request.user
-        username = user.username
+        queryset = user.Info.all()
+        for li in queryset:
+            info = li
+        nickname = info.nickname
+        try:
+            head = info.head_img
+            avatar = SITE_URL + "media/" + str(head)
+        except:
+            avatar = "image/mine/head.png"
         userLogin = {
             "status": 1,
-            "username": username,
+            "username": nickname,
+            "avatar":avatar,
         }
         return render(request, 'user-info.html', context=userLogin)
 
@@ -59,7 +70,25 @@ class SettingView(LoginMixin, View):
             return JsonResponse({'status':1})
 
 
-def upload_head(request):
+def avatar(request):
     # 获取上传头像的处理对象
+    if request.user.is_authenticated:
+        user = request.user
+        queryset = user.Info.all()
+        for li in queryset:
+            info = li
+        if request.method == 'POST':
+            avatar = request.FILES.get('avatar')
 
-    pass
+            # 1. 删除原头像
+            try:
+                head = info.head_img
+                info.head_img.delete()
+            except:
+                pass
+            # 2. 将传来的头像数据，保存到数据库
+            info.head_img = avatar
+            info.save()
+            return redirect(reverse('user:info'))
+
+        return redirect(reverse('user:info'))

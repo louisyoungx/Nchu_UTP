@@ -132,6 +132,10 @@ USE_TZ = True
 #域名设置
 SITE_HOST ='45.40.234.190' # this will reduce the Sites framework db call.
 
+if DEBUG == True:
+    SITE_URL = 'http://127.0.0.1:8000/'
+else:
+    SITE_URL = 'http://45.40..234.190/'
 # 静态文件目录
 STATIC_ROOT = '/var/www/LouisYoung/static'
 

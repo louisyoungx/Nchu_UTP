@@ -10,6 +10,7 @@ urlpatterns = [
     path('-info/',       InfoView.as_view(),    name='info'),
     path('-favorite/',    FavorView.as_view(),   name='favor'),
     path('-setting/',    SettingView.as_view(), name='setting'),
+    path('-avatar/',    views.avatar, name='avatar'),
 
 
 ]

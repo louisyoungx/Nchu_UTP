@@ -63,9 +63,11 @@
             $(function () {
                 var status = '{{ status }}';
                 var username = '{{ username }}';
+                var avatar = '{{ avatar }}';
                 if (status == '1'){
                     $(".index").attr('href','{% url 'user:info' %}');
                     $(".head-span").html(username);
+                    $(".head-url").attr('src',avatar);
                     $(".my-info").html('返回 >');
                     $(".my-info").attr('href','{% url 'main:mine' %}');
                 }
@@ -87,7 +89,7 @@
         <div class="head top-inside status mrl12 mb12 radius8 box-shadow">
             <div class="head-container container">
                 <div class="user-head">
-                    <img alt="" src={% static "image/mine/head.png" %}  />
+                    <img class="head-url" alt="" src={% static "image/mine/head.png" %}  />
                 </div>
                 <a class="index" href={% url "main:index" %}>
                     <span class="head-span">登录/注册</span>
@@ -100,7 +102,7 @@
                 <a class="user-info clearfix">
                     <div class="pull-left left">头像</div>
                     <div class="pull-right right">
-                        <img class="change-head" alt="" src={% static "image/mine/head.png" %} >
+                        <img class="change-head head-url" alt="" src={% static "image/mine/head.png" %} >
                         <i class="iconfont icon-youjianhao"></i>
                     </div>
                 </a>
@@ -108,7 +110,7 @@
             <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
 				<a href="" class="info-list clearfix">
 					<div class="pull-left">签名</div>
-                    <i class="middle-info" id="signature">牛逼，非常牛逼,牛逼爆了啊这个······</i>
+                    <i class="middle-info" id="signature">哈哈哈哈哈哈哈哈哈······</i>
 					<div class="pull-right">更改<i class="iconfont icon-youjianhao"></i></div>
 				</a>
 			</div>
@@ -149,14 +151,16 @@
 			</div>
 		</section>
         <section class="Dontshow showhead">
-            <form>
+            <form action="{% url 'user:avatar' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="wapbox accset">
                     <dl>
                         <dt><strong class="wap_title_big">请上传图片：</strong></dt>
                         <dd>
                             <div class="uplode_img">
                                 <input type="button" onclick="return false;" class="btn_tip btn_commom" value="上传头像">
-                                <input class="uplodefile" name="userfile" type="file" accept="image/*" autocomplete="off" disableautocomplete="">
+                                <input class="uplodefile" name="avatar" type="file" accept="image/*" >
+                                <input class="uplodefile" type="file" name="avatar">
                             </div><br>
                             <p>图片格式jpg、png、jpeg，大小不超过10MB</p>
                         </dd>
@@ -166,6 +170,7 @@
                 <div class="tip_btns">
                     <!-- <input class="btn_tip btn_commom" type="submit" value="保存"> -->
                     <a class="btn_tip btn_back head-back" title="取消">取消</a><br><br><br>
+                    <input class="btn_tip btn_back head-back" type="submit" value="提交">
                 </div>
             </form>
         </section>

@@ -24,10 +24,12 @@
         $(function () {
             var status = '{{ status }}';
             var username = '{{ username }}';
+            var avatar = '{{ avatar }}';
             var url = '{% url 'user:page' %}'+'/'+username;
             if (status == '1'){
                 $(".index").attr('href', url);
                 $(".head-span").html(username);
+                $(".head-url").attr('src',avatar);
                 $(".my-info").html('我的资料 >');
                 $(".my-info").attr('href','{% url 'user:info' %}');
             }
@@ -42,7 +44,7 @@
     <div class="head top-inside status mrl12 mb12 radius8 box-shadow">
         <div class="head-container container">
             <div class="user-head">
-                <img alt="" src={% static "image/mine/head.png" %}  />
+                <img class="head-url" alt="" src={% static "image/mine/head.png" %}  />
             </div>
             <a class="index" href={% url "main:index" %}>
                 <span class="head-span">登录/注册</span>
