@@ -130,7 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 #域名设置
-SITE_HOST ='45.40.234.190 ' # this will reduce the Sites framework db call.
+SITE_HOST ='45.40.234.190' # this will reduce the Sites framework db call.
 
 # 静态文件目录
 STATIC_ROOT = '/var/www/LouisYoung/static'

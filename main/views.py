@@ -10,13 +10,16 @@ from django.views import View
 from django.conf import settings
 from itsdangerous import TimedJSONWebSignatureSerializer as tjss, SignatureExpired
 from celeryT.tasks import send_register_active_email
-
+from user.models import UserInfo
 
 # Create your views here.
 
 
 
 # 主页
+
+
+
 class HomeView(View):
     '''主页'''
     def get(self, request):
@@ -148,8 +151,11 @@ class IndexView(View):
             elif user == "" and emails == "":
                 user = User.objects.create_user(username, email, password)
                 user.is_active = 0
-                info = info
+                info = UserInfo()
+                info.user = user
+                info.nickname = username
                 user.save()
+                info.save()
 
                 #发送激活邮件，包含激活链接：http://nchu-UTP/active/[加盐id]
 
@@ -208,7 +214,8 @@ def send_email(ID,Email,User):
     #收件人列表
     receiver = [Email]
 
-    url = '{site}{path}/{token}/'.format(site=site, path=path, token=token)
+    url = 'http://{site}{path}/{token}/'.format(site=site, path=path, token=token)
+    print(url)
     #team_blog = reverse('team:blog')
     team_blog = 'www.baidu.com'
 
