@@ -9,16 +9,16 @@ from db.base_model import BaseModel
 class User(BaseModel):
     '''用户模型类'''
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='所属用户')
-    trading_place = models.CharField(max_length=20, verbose_name='交易地点')
-    head_img = models.ImageField(upload_to='head', verbose_name='头像')
-    nickname = models.CharField(max_length=6, verbose_name='昵称')
-    phone = models.CharField(max_length=11, verbose_name='手机号')
-    QQ = models.CharField(max_length=20, verbose_name='QQ号')
-    WeChat = models.CharField(max_length=20, verbose_name='微信号')
-    signature = models.CharField(max_length=20, verbose_name='个性签名')
-    date_birth = models.CharField(max_length=10, verbose_name='生日')
-    college = models.CharField(max_length=20, verbose_name='学院')
-    apartment = models.CharField(max_length=5, verbose_name='寝室楼')
+    trading_place = models.CharField(max_length=20, blank=True, verbose_name='交易地点')
+    head_img = models.ImageField(upload_to='head', blank=True, verbose_name='头像')
+    nickname = models.CharField(max_length=6, blank=True, verbose_name='昵称')
+    phone = models.CharField(max_length=11, blank=True, verbose_name='手机号')
+    QQ = models.CharField(max_length=20, blank=True, verbose_name='QQ号')
+    WeChat = models.CharField(max_length=20, blank=True, verbose_name='微信号')
+    signature = models.CharField(max_length=20, blank=True, verbose_name='个性签名')
+    date_birth = models.CharField(max_length=10, blank=True, verbose_name='生日')
+    college = models.CharField(max_length=20, blank=True, verbose_name='学院')
+    apartment = models.CharField(max_length=5, blank=True, verbose_name='寝室楼')
 
 
     class Meta:

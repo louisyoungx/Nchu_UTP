@@ -129,20 +129,29 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+#域名设置
+SITE_HOST ='45.40.234.190 ' # this will reduce the Sites framework db call.
+
 # 静态文件目录
 STATIC_ROOT = '/var/www/LouisYoung/static'
 
-STATIC_URL = '/static/'
+
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR, "main/static"),
 ]
 
-#多媒体文件目录
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "/var/www/louisyoung/media")
+STATIC_URL = '/static/'
 
-#域名设置
-SITE_HOST ='45.40.234.190 ' # this will reduce the Sites framework db call.
+#多媒体文件目录
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "/var/www/LouisYoung/media")
+if DEBUG == True:
+    MEDIA_ROOT = os.path.join(BASE_DIR, "main/media")
+else:
+    MEDIA_ROOT = os.path.join(SITE_HOST, 'uploads')
+MEDIA_URL = '/media/'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # 邮箱设置
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -184,7 +193,5 @@ TINYMCE_DEFAUT_CONFIG = {
 # AUTH地址 core为app,UserProfile为用户model
 #AUTH_USER_MODEL = "user.User"
 
-MEDIA_ROOT = os.path.join(SITE_HOST, 'uploads')
-MEDIA_URL = '/media/'
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 
