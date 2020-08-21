@@ -148,6 +148,7 @@ class IndexView(View):
             elif user == "" and emails == "":
                 user = User.objects.create_user(username, email, password)
                 user.is_active = 0
+                info = info
                 user.save()
 
                 #发送激活邮件，包含激活链接：http://nchu-UTP/active/[加盐id]

@@ -6,7 +6,7 @@ from db.base_model import BaseModel
 # Create your models here.
 
 # 用户模型类
-class User(BaseModel):
+class UserInfo(BaseModel):
     '''用户模型类'''
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='所属用户')
     trading_place = models.CharField(max_length=20, blank=True, verbose_name='交易地点')
