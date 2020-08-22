@@ -264,7 +264,7 @@ def notFound404(request):
     return render(request, '404.html')
 
 def test(request):
-    return render(request,'')
+    return render(request,'2.html')
 
 
 

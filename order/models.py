@@ -19,8 +19,8 @@ class Order(BaseModel):
         (4, '已完成')
     }
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='所属账号')
-    goods = models.ForeignKey('goods.Goods', on_delete=models.CASCADE, verbose_name='所属商品')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='Order', on_delete=models.CASCADE, verbose_name='所属账号')
+    goods = models.ForeignKey('goods.Goods', on_delete=models.CASCADE,related_name='Order', verbose_name='所属商品')
     hash = models.CharField(max_length=128, verbose_name='订单编号')
     price = models.IntegerField(verbose_name='成交价格')
     index = models.IntegerField(verbose_name='序号')

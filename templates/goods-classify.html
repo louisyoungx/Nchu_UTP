@@ -15,6 +15,50 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src={% static 'js/bootstrap.min.js' %}></script>
     <style>
+        ul{
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .good-div{
+            height: 200px;
+            width: 360px;
+            padding-top: 20px;
+        }
+        .good-img{
+            border-top: 15px;
+            border-bottom: 15px;
+            width: 98px;
+            height: 98px;
+            float: left;
+            background-color: white;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .good-img img{
+            width: 95.69px;
+            margin: 0 auto; /*水平居中*/
+            position: relative;
+            top: 50%; /*偏移*/
+            transform: translateY(-50%);
+
+        }
+        .good-title{
+            margin-top: 10px;
+            text-align: left;
+            padding-top: 20px;
+        }
+        .good-title-div{
+            width: 360px;
+        }
+        .good-price-div{
+            float: left;
+            width: 360px;
+        }
+        .good-place{
+            float: right;
+            margin-right: 20px;
+        }
         .search1{
             width: 96%;
             margin-top: 2%;
@@ -44,6 +88,12 @@
         }
     </style>
 </head>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src={% static "js/vue.js" %}></script>
+<!-- 生产环境版本，优化了尺寸和速度 -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!--<script src="static/js/vue.min.js"></script>-->
+
 <body>
 <div class="navbar-fixed-top cover">
     <nav class="navbar navbar-default navbar-fixed-top search1 ">
@@ -84,68 +134,43 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-    <br><br>
+    <br><br><br>
 </div>
 <br><br>
-
-<div class="card">
+<form>
+<div id="card">
     <!--商品卡片-->
-    <div class="container good-div">
-        <div class="good-img-div">
-            <a href="#"><img  class="good-img good-img1" alt="" src={% static "image/good-img1.png" %}></a>
-            <a href="#"><img  class="good-img good-img2" alt="" src={% static "image/good-img2.png" %}></a>
-            <a href="#"><img  class="good-img good-img3" alt="" src={% static "image/good-img3.png" %}></a>
-        </div>
+    <ul>
+        <li class="container good-div" v-for="(Li) in List">
+            <div class="good-img-div">
+                <div class="good-img good-img1"><a href="#"><img v-bind:src="Li.pic1" class="" ></a></div>
+                <div class="good-img good-img2"><a href="#"><img v-bind:src="Li.pic2" class="" ></a></div>
+                <div class="good-img good-img3"><a href="#"><img v-bind:src="Li.pic3" class="" ></a></div>
+            </div>
+            <!--商品标题-->
+            <a href="#">
+                <div class="container good-title-div good-title">
+                    <p>[[Li.title]]</p>
+                </div>
+            </a>
 
-        <!--商品标题-->
-        <a href="#">
-            <div class="container good-title-div">
-                <p>Vans鞋，9新，图书馆面交</p>
-            </div>
-        </a>
+            <!--商品价格-->
+            <div class="container good-price-div">
+                <div class="price-icon">
+                    <p>¥</p>
+                </div>
+                <div class="price-num">
+                    <p>[[Li.price]]</p>
+                </div>
 
-        <!--商品价格-->
-        <div class="container good-price-div">
-            <div class="price-icon">
-                <p>¥</p>
-            </div>
-            <div class="price-num">
-                <p>150</p>
-            </div>
+                <!--商品发布地点-->
+                <div class="good-position">
+                    <p class="good-place">[[Li.place]]</p>
+                </div>
 
-            <!--商品发布地点-->
-            <div class="good-position">
-                <p>发布于：测光学院-17栋</p>
             </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="container good-div">
-        <div class="good-img-div">
-            <a href="#"><img class="good-img good-img1" alt="" src={% static "image/good-img1.png" %}></a>
-            <a href="#"><img class="good-img good-img2" alt="" src={% static "image/good-img2.png" %}></a>
-            <a href="#"><img class="good-img good-img3" alt="" src={% static "image/good-img3.png" %}></a>
-        </div>
-        <a href="#">
-            <div class="container good-title-div">
-                <p>Vans鞋，9新，图书馆面交</p>
-            </div>
-        </a>
-        <div class="container good-price-div">
-            <div class="price-icon">
-                <p>¥</p>
-            </div>
-            <div class="price-num">
-                <p>150</p>
-            </div>
-            <div class="good-position">
-                <p>发布于：测光学院-17栋</p>
-            </div>
-        </div>
-    </div>
+        </li>
+    </ul>
 
 </div>
 
@@ -164,4 +189,26 @@
     </div>
 </nav>
 </body>
+<script>
+    var app = new Vue({
+        el:"#card",
+        delimiters:['[[',']]'],
+        data: {
+            List:null,
+        },
+        mounted:function () {
+            var that = this;
+            $.ajax({
+                url:'{% url 'goods:addgoods' %}',
+                type:'GET',
+                dateType:'json'
+            }).done(function (res) {
+                that.List = res;
+            //    以此类推
+            }).fail(function () {
+                console.log("请求失败")
+            })
+        }
+    })
+</script>
 </html>

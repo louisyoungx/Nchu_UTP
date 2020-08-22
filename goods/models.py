@@ -12,7 +12,7 @@ class Goods(BaseModel):
         (1, '在售'),
         (2, '售出')
     )
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='所属用户')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='Goods', on_delete=models.CASCADE, verbose_name='所属用户')
     name = models.CharField(max_length=15, verbose_name='商品标题')
     price = models.IntegerField(verbose_name='商品价格')
     intro = HTMLField(verbose_name='简介')
@@ -36,7 +36,7 @@ class Goods(BaseModel):
 
 class GoodsImg(BaseModel):
     '''商品图片模型类'''
-    goods = models.ForeignKey('goods', on_delete=models.CASCADE, verbose_name='所属商品')
+    goods = models.ForeignKey('goods', on_delete=models.CASCADE,related_name='Img', verbose_name='所属商品')
     hash = models.CharField(max_length=128, verbose_name='图片编号')
     image = models.ImageField(upload_to='goods', verbose_name='图片')
     index = models.IntegerField(verbose_name='序号')
@@ -48,4 +48,4 @@ class GoodsImg(BaseModel):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.image
+        return self.hash
