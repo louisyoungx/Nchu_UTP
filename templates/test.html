@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>editor_admin</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src={% static "js/vue.js" %}></script>
+    <script src={% static 'js/jquery.min.js' %}></script>
+    <script type="text/javascript" src="{% static 'tinymce/jquery.tinymce.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'tinymce/tinymce.min.js' %}"></script>
+
+    <!--<script src="static/js/vue.min.js"></script>-->
+
+</head>
+<body>
+    <form method="post" action="content">
+        {% csrf_token %}
+        <input type="text" name="hname">
+        <br>
+        <textarea name="hcontent" id="" cols="30" rows="10">
+            测试使用
+        </textarea>
+        <br>
+        <input type="submit" value="提交">
+    </form>
+    <div id="info">
+
+    </div>
+<div id="app">
+    [[info.intro]]
+  <ol>
+    <li v-for="todo in todos">
+      [[ todo.text ]]
+    </li>
+  </ol>
+</div>
+</body>
+<script>
+    var app = new Vue({
+          delimiters:['[[',']]'],
+          data: {
+              info:null,
+          },
+        mounted:function () {
+                var that = this;
+                $.ajax({
+                    url:'{% url 'goods:info' %}',
+                    type:'GET',
+                    dateType:'json'
+                }).done(function (res) {
+                    that.info = res;
+                    var pic1 = res.pic1;
+                    var pic2 = res.pic2;
+                    var pic3 = res.pic3;
+                    var intro = res.intro;
+                    $(".pic1").attr('src',pic1);
+                    $(".pic2").attr('src',pic2);
+                    $(".pic3").attr('src',pic3);
+                    alert(intro);
+                    $(".intro").html(intro);
+                //    以此类推
+                }).fail(function () {
+                    alert('error');
+                    console.log("请求失败")
+                })
+            }
+        }).$mount('#app')
+</script>
+</html>

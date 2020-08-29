@@ -62,7 +62,7 @@
         .search1{
             width: 96%;
             margin-top: 2%;
-            margin-left: 2%;
+            margin-left: 1%;
         }
         .search-inside{
             width: 80%;
@@ -143,12 +143,12 @@
     <ul>
         <li class="container good-div" v-for="(Li) in List">
             <div class="good-img-div">
-                <div class="good-img good-img1"><a href="#"><img v-bind:src="Li.pic1" class="" ></a></div>
-                <div class="good-img good-img2"><a href="#"><img v-bind:src="Li.pic2" class="" ></a></div>
-                <div class="good-img good-img3"><a href="#"><img v-bind:src="Li.pic3" class="" ></a></div>
+                <div class="good-img good-img1"><a v-bind:href="Li.id"><img v-bind:src="Li.pic1" class="" ></a></div>
+                <div class="good-img good-img2"><a v-bind:href="Li.id"><img v-bind:src="Li.pic2" class="" ></a></div>
+                <div class="good-img good-img3"><a v-bind:href="Li.id"><img v-bind:src="Li.pic3" class="" ></a></div>
             </div>
             <!--商品标题-->
-            <a href="#">
+            <a v-bind:href="Li.id">
                 <div class="container good-title-div good-title">
                     <p>[[Li.title]]</p>
                 </div>
@@ -165,7 +165,7 @@
 
                 <!--商品发布地点-->
                 <div class="good-position">
-                    <p class="good-place">[[Li.place]]</p>
+                    <p class="good-place">交易地点：[[Li.place]]</p>
                 </div>
 
             </div>
@@ -188,6 +188,7 @@
         <a href="{% url 'main:mine' %}"><img alt="" class="navigation navi3" src={% static "image/nav-people.png" %}></a>
     </div>
 </nav>
+</form>
 </body>
 <script>
     var app = new Vue({
@@ -201,9 +202,15 @@
             $.ajax({
                 url:'{% url 'goods:addgoods' %}',
                 type:'GET',
+                data:{
+                    'classify':'{{ classify }}',
+                },
                 dateType:'json'
             }).done(function (res) {
                 that.List = res;
+                if(res.status===0){
+                    alert('暂无该类商品')
+                }
             //    以此类推
             }).fail(function () {
                 console.log("请求失败")

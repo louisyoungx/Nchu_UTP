@@ -14,6 +14,6 @@ urlpatterns = [
     path('active', ActiveView.as_view(), name='activity'),
     path('404', views.notFound404, name='404'),
     path('set_cookie', views.set_cookie, name='cookie'),
-    path('test', views.test, name='test'),
+    path('test/', views.test, name='test'),
 
 ]

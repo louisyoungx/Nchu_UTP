@@ -12,6 +12,7 @@ class Goods(BaseModel):
         (1, '在售'),
         (2, '售出')
     )
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='Goods', on_delete=models.CASCADE, verbose_name='所属用户')
     name = models.CharField(max_length=15, verbose_name='商品标题')
     price = models.IntegerField(verbose_name='商品价格')

@@ -1,17 +1,69 @@
 <!doctype html>
-<html>
+<html lang="zh-CN" xmlns="">
 <head>
+    {% load static %}
 	<meta charset="UTF-8">
-	<title>微商城</title>
+	<title>昌航有物：商品详情</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href={% static "css/reset-u.css" %}>
+    <link rel="stylesheet" href={% static "css/standby.css" %}>
+    <link rel="stylesheet" href={% static "css/swiper.min.css" %}>
+    <script src={% static "js/jquery.min.js" %} ></script>
+    <script type="text/javascript" src="{% static 'tinymce/jquery.tinymce.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'tinymce/tinymce.min.js' %}"></script>
+    <style>
+        .head {
+            background: #e4abc2;
+        }
+        .Libian{
+            font-size: x-large!important;
+            text-align: center;
+            margin: 0 auto;
+            color: white;
+            font-family: "Libian SC", serif
+        }
+        .back{
+            position: absolute;
+            font-size: large!important;
+            margin-top: 4%;
+            margin-left: 2%;
+        }
+        .shop-go a {
+            border: 1px solid  #fb6b97;
+            color: #fb6b97;
+        }
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #fb6b97;
+        }
+        .pro-title div.info strong {
+            vertical-align: sub;
+            font-size: 16px;
+            color: #fb6b97;
+            font-weight: bold;
+        }
+        .footr-nav div.text-box a:first-child {
+            width: 47%;
+            background: #afd1d7;
+        }
+        .footr-nav div.text-box a:last-child {
+            width: 44%;
+            background: #e4abc2;
+        }
+    </style>
 </head>
+<script>
+    $(function () {
+        $(".back").click(function () {
+            window.history.go(-1); //返回上一页
+        });
+    })
+</script>
 <body>
 	<section class="head">
-		<h1>商品分类</h1>
+        <p class="back Libian">< 返回</p>
+		<h1 class="Libian">详情</h1>
 		<a class="more" href="javascript:void(0);"><i class="iconfont icon-fenxiang"></i></a>
 	</section>
 	<section class="banner white e5e5e5 ">
@@ -19,69 +71,70 @@
 			<div class="swiper-wrapper pb30">
 				<div class="swiper-slide">
 					<div class="p0">
-						<img class="box-shadow" src="images/show.jpg" alt="show" title="show">
+						<img class="box-shadow pic1" src="" alt="show" title="show">
 					</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="p0">
-						<img class="box-shadow" src="images/show.jpg" alt="show" title="show">
+						<img class="box-shadow pic2" src="" alt="show" title="show">
 					</div>
 				</div>
 				<div class="swiper-slide">
-					<div class="p0">
-						<img class="box-shadow" src="images/show.jpg" alt="show" title="show">
+					<div class="p0 info">
+						<img class="box-shadow pic3" src="" alt="show" title="show">
 					</div>
 				</div>
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>
 	</section>
+    <div id="app">
 	<section class="pb20 white">
 		<div class="pro-title plr10">
 			<div class="info">
-				<p class="text-ell2 mb5">无印良品亚麻布料抱枕 三色可选蓝白条纹 黄白条纹 灰白条纹商品型...</p>
+				<p class="text-ell2 mb5">[[info.title]]</p>
 				<div class="clearfix">
-					<strong>¥299</strong>
+					<strong>¥ [[info.price]]</strong>
 					<a class="pull-right mr10" href="javascript:void(0);"><i class="iconfont icon-shoucangkongxin mr5"></i><span>收藏</span></a>
 				</div>
 			</div>
 			<div class="number">
-				<p class="text-ell">运费： <span>0.00</span></p>
-				<p class="text-ell">库存：<span>1000</span></p>
-				<p class="text-ell">销量：<span>366</span></p>
+				<p class="text-ell">点击数：<span>[[info.click_num]]</span></p>
+				<p class="text-ell">收藏数：<span>[[info.like_num]]</span></p>
+				<p class="text-ell">地点：<span>[[info.place]]</span></p>
 			</div>
 		</div>
 	</section>
 	<section class="white mt5 mb60">
-		<div class="plr10 show choice-box" onclick="code.open(this);">
+		{% comment %}<div class="plr10 show choice-box" onclick="code.open(this);">
 			<a href="javascript:void(0);"><span>请选择商品规格及数量</span><i class="iconfont icon-youjianhao pull-right"></i></a>
-		</div>
+		</div>{% endcomment %}
 		<div class="">
 			<div class="dis-flex align-c mtb20">
 				<div class="shop-logo">
-					<img src="images/brand.jpg" alt="店铺logo" title="店铺logo">
+					<img :src="info.avatar" alt="头像" title="头像">
 				</div>
 				<div class="show flex1 shop-info">
-					<strong class="text-ell">无印良品中国旗舰店</strong>
-					<p class="text-ell">全部宝贝：<span>366</span>件</p>
+					<strong class="text-ell">[[info.seller]]</strong>
+					<p class="text-ell">全部宝贝：<span>[[info.num]]</span>件</p>
 				</div>
 			</div>
 			<div class="dis-flex shop-go" >
-				<a href="javascript:void(0);">查看全部商品</a><a href="javascript:void(0);">进店逛逛</a>
-			</div>  
+				<a href="javascript:void(0);">查看全部商品</a><a href="javascript:void(0);">个人主页</a>
+			</div>
 		<div class="img-title">
-			<strong>图文详情</strong>
+			<strong>简介</strong>
 		</div>
-		<div class='img-box'>
-			<img src="images/pro1_1.jpg" alt="产品展示">
-			<img src="images/pro1_2.jpg" alt="产品展示">
-			<p><i></i>注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！<a href="javascript:void(0);">进入</a></p>
+		<div>
+            <p v-html="info.intro"></p><br><br>
 		</div>
-	</section>
+        </div>
+    </section><br>
 	<section class="footr-nav">
 		<div class="white">
 			<div class="icon-box">
-				<i class="iconfont icon-gouwuche"></i><i class="iconfont icon-gerenzhongxin"></i>
+                <a  href={% url 'main:cart' %}><i class="iconfont icon-gouwuche"></i></a>
+                <a  href={% url 'main:mine' %}><i href="{% url 'main:mine' %}" class="iconfont icon-gerenzhongxin"></i></a>
 			</div>
 			<div class="text-box">
 				<a href="javascript:void(0);"><span>加入购物车</span></a>
@@ -89,11 +142,11 @@
 			</div>
 		</div>
 	</section>
-	<section class="mask" onclick="code.close(this)">
+	{% comment %}<section class="mask" onclick="code.close(this)">
 		<div class="main-bottom">
 			<div class="main-title dis-flex">
 				<div class="imgs">
-					<img src="images/mask_img.jpg" alt="产品展示" title="产品展示">
+					<img src="" alt="产品展示" title="产品展示">
 				</div>
 				<div class="text">
 					<p class="text-ell">商品价格：<strong>¥299</strong></p>
@@ -152,8 +205,10 @@
 					</div>
 					<div>
 						<i>-</i>
-						<input type="text" value="0" readonly>
-						<i data-number="up">+</i>
+                        <label>
+                            <input type="text" value="0" readonly>
+                        </label>
+                        <i data-number="up">+</i>
 					</div>
 				</div>
 			</div>
@@ -162,10 +217,47 @@
 			</div>
 			<div class="close" onclick="code.close(this);"><i class="iconfont icon-close"></i></div>
 		</div>
-	</section>
+	</section>{% endcomment %}
 
-	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/swiper.min.js"></script>
-	<script src="js/common.js"></script>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src={% static "js/vue.js" %}></script>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!--<script src="static/js/vue.min.js"></script>-->
+    <script src={% static "js/swiper.min.js" %} ></script>
+    <script src={% static "js/common.js" %} ></script>
+</div>
 </body>
+<script>
+    var app = new Vue({
+          delimiters:['[[',']]'],
+          data: {
+              info:null,
+          },
+        mounted:function () {
+                var that = this;
+                $.ajax({
+                    url:'{% url 'goods:info' %}',
+                    type:'GET',
+                    data:{
+                        'id':{{ id }}
+                    },
+                    dateType:'json'
+                }).done(function (res) {
+                    that.info = res;
+                    var pic1 = res.pic1;
+                    var pic2 = res.pic2;
+                    var pic3 = res.pic3;
+                    $(".pic1").attr('src',pic1);
+                    $(".pic2").attr('src',pic2);
+                    $(".pic3").attr('src',pic3);
+
+                //    以此类推
+                }).fail(function () {
+                    alert('error');
+                    console.log("请求失败")
+                })
+            }
+        }).$mount('#app')
+</script>
 </html>
