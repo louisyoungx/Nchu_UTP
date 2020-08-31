@@ -41,11 +41,15 @@ class MineView(View):
             user = request.user
             info = user.Info.all()[0]
             nickname = info.nickname
+            standby = FDFS_URL + "group1/M00/00/00/rBAABl9NGRqAbR35AACliJWKXMs769.png"
             try:
                 head = info.head_img
-                avatar = FDFS_URL + str(head)
+                if head:
+                    avatar = FDFS_URL + str(head)
+                else:
+                    avatar = standby
             except:
-                avatar = "image/mine/head.png"
+                avatar = standby
             nickname = info.nickname
             userLogin = {
                 "status":1,
