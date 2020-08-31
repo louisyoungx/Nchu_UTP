@@ -9,7 +9,7 @@ from django.urls import reverse
 from django.views import View
 from django.conf import settings
 from itsdangerous import TimedJSONWebSignatureSerializer as tjss, SignatureExpired
-from Nchu_UTP.settings import SITE_URL
+from Nchu_UTP.settings import SITE_URL, FDFS_URL
 from celeryT.tasks import send_register_active_email
 from user.models import UserInfo
 
@@ -39,13 +39,11 @@ class MineView(View):
         """处理GET请求业务逻辑"""
         if request.user.is_authenticated:
             user = request.user
-            queryset = user.Info.all()
-            for li in queryset:
-                info = li
+            info = user.Info.all()[0]
             nickname = info.nickname
             try:
                 head = info.head_img
-                avatar = SITE_URL+"media/"+str(head)
+                avatar = FDFS_URL + str(head)
             except:
                 avatar = "image/mine/head.png"
             nickname = info.nickname

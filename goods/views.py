@@ -4,12 +4,11 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from Nchu_UTP.settings import SITE_URL, DEBUG
+from Nchu_UTP.settings import SITE_URL, DEBUG, FDFS_URL
 from goods.models import Goods,GoodsImg
 from utils.Mixin import LoginMixin
 
 # Create your views here.
-
 
 # 分类主页面
 class ListView(View):
@@ -33,7 +32,6 @@ class AddListView(View):
         if len(goods)==0:
             return JsonResponse({'status':0})
         for good in goods:
-            i = 1
             json_dict = {}
             # 获取商品的每个字段，键值对形式
 
@@ -45,11 +43,17 @@ class AddListView(View):
             href = SITE_URL + "goods-detail/" + str(good.id)
             json_dict['id'] = href
 
+            # 封面为pic1
+            surface = good.surface
+            surface_url = FDFS_URL + str(surface)
+            json_dict['pic1'] = surface_url
+
             #查询所有图片
+            i = 2
             ImgList = good.Img.all()
             for img in ImgList:
                 index = 'pic'+str(i)
-                url = SITE_URL + "media/" + str(img.image)
+                url = FDFS_URL + str(img.image)
                 json_dict[index] = str(url)
                 i=i+1
             json_list.append(json_dict)
@@ -74,17 +78,14 @@ class InfoView(View):
         good = Goods.objects.get(id=good_id)
         seller = good.user
         goodNum = len(seller.Goods.all())
-        queryset = seller.Info.all()
-        for li in queryset:
-            info = li
+        info = seller.Info.all()[0]
         nickname = info.nickname
         try:
             head = info.head_img
-            avatar = SITE_URL + "media/" + str(head)
+            avatar = FDFS_URL + str(head)
         except:
             avatar = "image/mine/head.png"
 
-        i = 1
         json_dict = {}
         # 获取商品的每个字段，键值对形式
         json_dict['seller'] = nickname
@@ -98,11 +99,17 @@ class InfoView(View):
         json_dict['like_num'] = good.like_num
         json_dict['click_num'] = good.click_num
 
+        # 封面为pic1
+        surface = good.surface
+        surface_url = FDFS_URL + str(surface)
+        json_dict['pic1'] = surface_url
         # 查询所有图片
+
+        i = 2
         ImgList = good.Img.all()
         for img in ImgList:
             index = 'pic' + str(i)
-            url = SITE_URL + "media/" + str(img.image)
+            url = FDFS_URL + str(img.image)
             json_dict[index] = str(url)
             i = i + 1
         # 将获取到的数据返回到 json中
@@ -135,9 +142,6 @@ class ReleaseView(LoginMixin, View):
             if DEBUG == True:
                 print(classify, name, price)
             good = Goods.objects.create(user=user, name=name, price=price, intro=intro, place=place,surface=avatar, classify=classify)
-            image1 = GoodsImg(goods=good, hash='test', image=avatar, index=1)
-            image1.save()
-            print(pic3)
             if pic2 == None:
                 pass
             else:

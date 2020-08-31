@@ -3,7 +3,7 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from Nchu_UTP.settings import SITE_URL
+from Nchu_UTP.settings import SITE_URL, FDFS_URL
 from utils.Mixin import LoginMixin
 from user.models import UserInfo
 
@@ -26,13 +26,11 @@ class PageView(View):
 class InfoView(LoginMixin, View):
     def get(self, request):
         user = request.user
-        queryset = user.Info.all()
-        for li in queryset:
-            info = li
+        info = user.Info.all()[0]
         nickname = info.nickname
         try:
             head = info.head_img
-            avatar = SITE_URL + "media/" + str(head)
+            avatar = FDFS_URL + str(head)
         except:
             avatar = "image/mine/head.png"
         userLogin = {
@@ -74,9 +72,7 @@ def avatar(request):
     # 获取上传头像的处理对象
     if request.user.is_authenticated:
         user = request.user
-        queryset = user.Info.all()
-        for li in queryset:
-            info = li
+        info = user.Info.all()[0]
         if request.method == 'POST':
             avatar = request.FILES.get('avatar')
 

@@ -200,5 +200,7 @@ TINYMCE_DEFAUT_CONFIG = {
 # 设置Django的文件存储类
 DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FastDFS_Storage'
 
+# 设置FastDFS使用度client.config地址
+FDFS_CLIENT_CONF = './utils/fdfs/client.conf'
 # FastDFS地址
 FDFS_URL = 'http://45.40.234.190:8888/'
