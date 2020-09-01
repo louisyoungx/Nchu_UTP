@@ -110,7 +110,7 @@
             <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
 				<a href="" class="info-list clearfix">
 					<div class="pull-left">签名</div>
-                    <i class="middle-info" id="signature">哈哈哈哈哈哈哈哈哈······</i>
+                    <i class="middle-info signature" id="signature">哈哈哈哈哈哈哈哈哈······</i>
 					<div class="pull-right">更改<i class="iconfont icon-youjianhao"></i></div>
 				</a>
 			</div>
@@ -175,7 +175,11 @@
             </form>
         </section>
 		<script src={% static "js/jquery-1.10.2.min.js" %}></script>
-
+        <script>
+            $('.signature').click(function () {
+                prompt("我的签名");
+            })
+        </script>
 	</body>
 
 </html>
