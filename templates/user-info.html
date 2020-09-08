@@ -34,7 +34,8 @@
                 border-radius: 2.5rem;
             }
             .my-info{
-                font-size: 1.5rem!important;
+                margin-top: 1rem;
+                font-size: 1.25rem!important;
             }
             .btn_commom{
                 background: #acc0dc;
@@ -57,32 +58,20 @@
             .ifshow{
                 display: block;
             }
+            .bk{
+                background: #fff;
+                height: 30px;
+            }
+            .pro-info {max-width:644px;margin: 0 auto;z-index: 101;position: fixed;bottom: 50px;right: 0;left: 0;height: 50px;line-height: 49px;background: #f4f4f4;text-align: center}
+            .pro-info div {text-align: right;opacity: 0}
+            .pro-info span {font-size: 14px;color: #363636;}
+            .pro-info em {color: #bbb4df;}
+            .pro-info a {display: inline-block;width: 95%;height: 45px;margin:25px 12px 0 6px;line-height: 42px;border-radius: 5px;font-size: 12px;color: #fff;background: #bbb4df;text-align: center;}
+
         </style>
         <script src={% static "js/jquery.min.js" %}></script>
         <script>
-            $(function () {
-                var status = '{{ status }}';
-                var username = '{{ username }}';
-                var avatar = '{{ avatar }}';
-                if (status == '1'){
-                    $(".index").attr('href','{% url 'user:info' %}');
-                    $(".head-span").html(username);
-                    $(".head-url").attr('src',avatar);
-                    $(".my-info").html('返回 >');
-                    $(".my-info").attr('href','{% url 'main:mine' %}');
-                }
-                else {
-                    $(".head-span").attr('class','head-span-before');
-                }
-                $(".change-head").click(function () {
-                    $(".ifshow").attr('class','Dontshow');
-                    $(".showhead").attr('class','ifshow');
-                });
-                $(".head-back").click(function () {
-                    $(".ifshow").attr('class','showhead');
-                    $(".Dontshow").attr('class','ifshow');
-                })
-            })
+
         </script>
 	</head>
 	<body>
@@ -108,48 +97,71 @@
                 </a>
             </div>
             <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
-				<a href="" class="info-list clearfix">
+				<div href="" class="info-list clearfix signature">
 					<div class="pull-left">签名</div>
-                    <i class="middle-info signature" id="signature">哈哈哈哈哈哈哈哈哈······</i>
+                    <i class="middle-info" id="signature">哈哈哈哈哈哈哈哈哈······</i>
 					<div class="pull-right">更改<i class="iconfont icon-youjianhao"></i></div>
-				</a>
+				</div>
 			</div>
             <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
-				<a href="" class="info-list clearfix">
+				<a href="" class="info-list clearfix nick">
 					<div class="pull-left">昵称</div>
                     <i class="middle-info" id="nickname">王大锤</i>
 					<div class="pull-right">修改<i class="iconfont icon-youjianhao"></i></div>
 				</a>
 			</div>
             <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
-				<a href="" class="info-list clearfix">
+				<a href="" class="info-list clearfix birthday">
 					<div class="pull-left">生日</div>
                     <i class="middle-info" id="birthday">2020.02.15</i>
 					<div class="pull-right">修改<i class="iconfont icon-youjianhao"></i></div>
 				</a>
 			</div>
             <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
-				<a href="" class="info-list clearfix">
-					<div class="pull-left">年级</div>
+				<a href="" class="info-list clearfix phone">
+					<div class="pull-left">手机</div>
+                    <i class="middle-info" id="phone">123456789</i>
+					<div class="pull-right">修改<i class="iconfont icon-youjianhao"></i></div>
+				</a>
+            </div>
+            <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
+            <a href="" class="info-list clearfix QQ">
+                <div class="pull-left">QQ</div>
+                <i class="middle-info" id="QQ">987654321</i>
+                <div class="pull-right">修改<i class="iconfont icon-youjianhao"></i></div>
+            </a>
+            </div>
+            <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
+                <a href="" class="info-list clearfix grade">
+                    <div class="pull-left">年级</div>
                     <i class="middle-info" id="grade">2018级</i>
-					<div class="pull-right">添加<i class="iconfont icon-youjianhao"></i></div>
-				</a>
-			</div>
+                    <div class="pull-right">添加<i class="iconfont icon-youjianhao"></i></div>
+                </a>
+            </div>
             <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
-				<a href="" class="info-list clearfix">
-					<div class="pull-left">学院</div>
+                <a href="" class="info-list clearfix college">
+                    <div class="pull-left">学院</div>
                     <i class="middle-info" id="college">测光学院</i>
-					<div class="pull-right">添加<i class="iconfont icon-youjianhao"></i></div>
-				</a>
-			</div>
+                    <div class="pull-right">添加<i class="iconfont icon-youjianhao"></i></div>
+                </a>
+            </div>
             <div class="info-item top-inside status mrl12 mb12 radius8 box-shadow">
-				<a href="" class="info-list clearfix">
-					<div class="pull-left">寝室</div>
+                <a href="" class="info-list clearfix apartment">
+                    <div class="pull-left">寝室</div>
                     <i class="middle-info" id="apartment">17栋</i>
-					<div class="pull-right">添加<i class="iconfont icon-youjianhao"></i></div>
-				</a>
-			</div>
-		</section>
+                    <div class="pull-right">添加<i class="iconfont icon-youjianhao"></i></div>
+                </a>
+            </div>
+                <br><br><br>
+                <br><br><br>
+        </section>
+
+
+            <div class="pro-info" style="text-align: center">
+                <a class="ajax-sub">保存</a>
+                <p class="bk"></p>
+            </div>
+
         <section class="Dontshow showhead">
             <form action="{% url 'user:avatar' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -176,9 +188,132 @@
         </section>
 		<script src={% static "js/jquery-1.10.2.min.js" %}></script>
         <script>
-            $('.signature').click(function () {
-                prompt("我的签名");
-            })
+            $(function () {
+                var status = '{{ status }}';
+                var avatar = '{{ avatar }}';
+                var username = '{{ username }}';
+                var signature = '{{ signature }}';
+                var nickname = '{{ nickname }}';
+                var birthday = '{{ birthday }}';
+                var phone = '{{ phone }}';
+                var QQ = '{{ QQ }}';
+                var grade = '{{ grade }}';
+                var college = '{{ college }}';
+                var apartment = '{{ apartment }}';
+                var apt = "asdasdsad";
+
+                if (status == '1'){
+                    $(".index").attr('href','{% url 'user:info' %}');
+                    $(".head-span").html(username);
+                    $(".head-url").attr('src',avatar);
+                    $(".my-info").html('返回 >');
+                    $(".my-info").attr('href','{% url 'main:mine' %}');
+                    $('#signature').html(signature);
+                    $('#nickname').html(nickname);
+                    $('#birthday').html(birthday);
+                    $('#phone').html(phone);
+                    $('#QQ').html(QQ);
+                    $('#grade').html(grade);
+                    $('#college').html(college);
+                    $('#apartment').html(apartment);
+                }
+                else {
+                    $(".head-span").attr('class','head-span-before');
+                }
+                $(".change-head").click(function () {
+                    $(".ifshow").attr('class','Dontshow');
+                    $(".showhead").attr('class','ifshow');
+                });
+                $(".head-back").click(function () {
+                    $(".ifshow").attr('class','showhead');
+                    $(".Dontshow").attr('class','ifshow');
+                });
+
+                $('.signature').click(function () {
+                    signature = prompt("我的签名");
+                    $('#signature').html(signature);
+                    return false
+                });
+
+                $('.nick').click(function () {
+                    nickname = prompt("昵称（不同于登陆用的用户名）");
+                    $('#nickname').html(nickname);
+                    return false
+                });
+
+                $('.birthday').click(function () {
+                    birthday = prompt("生日（例：2020.2.5)");
+                    $('#birthday').html(birthday);
+                    return false
+                });
+
+                $('.phone').click(function () {
+                    phone = prompt("请填写手机号码");
+                    $('#phone').html(phone);
+                    return false
+                });
+
+
+                $('.QQ').click(function () {
+                    QQ = prompt("QQ号");
+                    $('#QQ').html(QQ);
+                    return false
+                });
+
+
+                $('.grade').click(function () {
+                    grade = prompt("入学年级,填数字（如2020）");
+                    $('#grade').html(grade);
+                    return false
+                });
+
+
+                $('.college').click(function () {
+                    college = prompt("所属学院（例：测光学院）");
+                    $('#college').html(college);
+                    return false
+                });
+
+                $('.apartment').click(function () {
+                    apartment = prompt("寝室楼号（例：17栋）");
+                    $('#apartment').html(apartment);
+                    return false
+                });
+
+                $(function () {
+                    var csrf_token = '{{ csrf_token }}';
+                    $('.ajax-sub').click(function () {
+                        $.ajax({
+                            url:{% url 'user:info' %},
+                            type:'POST',
+                            data:{
+                                'csrfmiddlewaretoken': csrf_token,
+                                'signature':signature,
+                                'nickname':nickname,
+                                'birthday':birthday,
+                                'phone':phone,
+                                'QQ':QQ,
+                                'grade':grade,
+                                'college':college,
+                                'apartment':apartment,
+                            },
+                            dataType:'json'
+                        }).success(function (data) {
+                            if (data.status == '1'){
+                                location.reload();
+                            }
+                            if (data.status == '0'){
+                                alert('上传失败error:500')
+                            }
+                        }).error(function () {
+                            alert('上传失败error:404');
+                            location.reload();
+                        })
+                    })
+                })
+
+            });
+
         </script>
 	</body>
 

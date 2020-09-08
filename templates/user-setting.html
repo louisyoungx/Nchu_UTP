@@ -33,7 +33,8 @@
             border-radius: 2.5rem;
         }
         .my-info{
-            font-size: 1.5rem!important;
+            margin-top: 1rem;
+            font-size: 1.25rem!important;
         }
         .pro-info {max-width:644px;margin: 0 auto;z-index: 101;position: fixed;bottom: 50px;right: 0;left: 0;height: 50px;line-height: 49px;background: #f4f4f4;text-align: center}
         .pro-info div {text-align: right;}
@@ -46,10 +47,12 @@
     <script>
         $(function () {
             var status = '{{ status }}';
+            var avatar = '{{ avatar }}';
             var username = '{{ username }}';
             if (status == '1'){
                 $(".index").attr('href','{% url 'user:info' %}');
                 $(".head-span").html(username);
+                $(".head-url").attr('src',avatar);
                 $(".my-info").html('返回 >');
                 $(".my-info").attr('href','{% url 'main:mine' %}');
             }
@@ -64,7 +67,7 @@
         <div class="head top-inside status mrl12 mb12 radius8 box-shadow">
             <div class="head-container container">
                 <div class="user-head">
-                    <img alt="" src={% static "image/mine/head.png" %}  />
+                    <img class="head-url" alt="" src={% static "image/mine/head.png" %}  />
                 </div>
                 <a class="index" href={% url "main:index" %}>
                     <span class="head-span">登录/注册</span>

@@ -18,6 +18,7 @@ class UserInfo(BaseModel):
     signature = models.CharField(max_length=20, blank=True, verbose_name='个性签名')
     date_birth = models.CharField(max_length=10, blank=True, verbose_name='生日')
     college = models.CharField(max_length=20, blank=True, verbose_name='学院')
+    grade = models.CharField(max_length=5, blank=True, verbose_name='年级')
     apartment = models.CharField(max_length=5, blank=True, verbose_name='寝室楼')
 
 
